@@ -175,6 +175,7 @@ describe('offer-led sample journey', () => {
     await user.click(screen.getByRole('button', { name: 'Continue with Google' }));
     await waitFor(() => expect(screen.getByRole('heading', { name: 'Create your ID Card.' })).toBeInTheDocument(), { timeout: 2000 });
     expect(screen.queryByRole('button', { name: /Check my details/i })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Choose profile photo' }).querySelectorAll('svg')).toHaveLength(1);
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
     expect(screen.getByLabelText('Full legal name *')).toHaveFocus();
     expect(screen.getByText('Add and crop a profile photo.').closest('.id-studio__identity-row')).toBeInTheDocument();
@@ -203,7 +204,9 @@ describe('offer-led sample journey', () => {
     await user.click(screen.getByRole('button', { name: 'Save photo' }));
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
     const celebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' }, { timeout: 5000 });
-    expect(celebration).toHaveTextContent('Nice one, Jordan!');
+    expect(celebration).toHaveTextContent('Congratulations,Jordan!');
+    expect(celebration).toHaveTextContent('Continue with the rest of your enrollment tasks.');
+    expect(celebration).toHaveTextContent('Explore campus, clubs and events');
     expect(celebration.querySelector('.id-studio__success-mark')).not.toBeInTheDocument();
     const story = within(celebration).getByRole('img', { name: /Shareable story preview: My next chapter/i });
     expect(story).toBeInTheDocument();
@@ -233,7 +236,7 @@ describe('offer-led sample journey', () => {
     await user.type(screen.getByLabelText('Full legal name *'), 'Asdfasdasdfasdsfasdfslasdhjgsldfjksdkfgdasf Example');
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
     const longNameCelebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' }, { timeout: 5000 });
-    expect(longNameCelebration).toHaveTextContent('Nice one, Asdfasdasdfasd…!');
+    expect(longNameCelebration).toHaveTextContent('Congratulations,Asdfasdasdfasd…!');
     await user.click(screen.getByRole('button', { name: /See your pending enrollment tasks/i }));
     expect(screen.getByRole('heading', { name: 'The next steps are yours.' })).toBeInTheDocument();
   }, 30_000);

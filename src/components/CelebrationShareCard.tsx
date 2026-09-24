@@ -51,12 +51,14 @@ export function CelebrationShareCard({ institutionName = 'Northbridge University
       <p>Pick a design, save the video, and share it where you like.</p>
     </div>
 
-    <div className="celebration-share__formats" role="group" aria-label="Video design">
-      <button type="button" aria-pressed={format === 'story'} className={format === 'story' ? 'is-selected' : ''} onClick={() => { setFormat('story'); setError(''); }}><Smartphone size={16} aria-hidden="true" /> Story <small>9:16</small></button>
-      <button type="button" aria-pressed={format === 'announcement'} className={format === 'announcement' ? 'is-selected' : ''} onClick={() => { setFormat('announcement'); setError(''); }}><ImageIcon size={16} aria-hidden="true" /> Announcement <small>1:1</small></button>
-    </div>
-
-    <div className="celebration-share__stage">
+    <div className="celebration-share__workspace">
+      <div className="celebration-share__social" role="group" aria-label="Open a social app to share">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram to share the downloaded video" title="Instagram"><FaInstagram aria-hidden="true" /></a>
+        <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn to share the downloaded video" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Open X to share the downloaded video" title="X"><FaXTwitter aria-hidden="true" /></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook to share the downloaded video" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
+      </div>
+      <div className="celebration-share__stage"><div className={`celebration-share__preview-wrap celebration-share__preview-wrap--${format}`}>
       {format === 'story' ? <div className="celebration-share__card celebration-share__card--story" role="img" aria-label={`Shareable story preview: My next chapter starts here at ${institutionName}`}>
         {photoAvailable && <img src={PHOTO_PATH} alt="" onError={() => setPhotoAvailable(false)} />}
         <span className="celebration-share__shade" aria-hidden="true" />
@@ -81,16 +83,12 @@ export function CelebrationShareCard({ institutionName = 'Northbridge University
         </div>
         <span className="celebration-share__announcement-footer">A NEW CHAPTER BEGINS</span>
       </div>}
-    </div>
-
-    <div className="celebration-share__actions">
-      <div className="celebration-share__social" role="group" aria-label="Open a social app to share">
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram to share the downloaded video" title="Instagram"><FaInstagram aria-hidden="true" /></a>
-        <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn to share the downloaded video" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
-        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Open X to share the downloaded video" title="X"><FaXTwitter aria-hidden="true" /></a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook to share the downloaded video" title="Facebook"><FaFacebookF aria-hidden="true" /></a>
+        <button type="button" className="celebration-share__download" aria-label={busy ? 'Creating video' : 'Download video'} disabled={busy || !canRecordVideo} onClick={() => void downloadVideo()} title={!canRecordVideo ? 'Video export is not supported in this browser' : 'Download video'}><Download size={18} aria-hidden="true" /></button>
+      </div></div>
+      <div className="celebration-share__formats" role="group" aria-label="Video design">
+        <button type="button" aria-pressed={format === 'story'} className={format === 'story' ? 'is-selected' : ''} onClick={() => { setFormat('story'); setError(''); }}><Smartphone size={16} aria-hidden="true" /><span>Story<small>9:16</small></span></button>
+        <button type="button" aria-label="Announcement 1:1" aria-pressed={format === 'announcement'} className={format === 'announcement' ? 'is-selected' : ''} onClick={() => { setFormat('announcement'); setError(''); }}><ImageIcon size={16} aria-hidden="true" /><span>Post<small>1:1</small></span></button>
       </div>
-      <button type="button" className="celebration-share__download" disabled={busy || !canRecordVideo} onClick={() => void downloadVideo()} title={!canRecordVideo ? 'Video export is not supported in this browser' : undefined}><Download size={17} aria-hidden="true" /> {busy ? 'Creating video…' : 'Download video'}</button>
     </div>
     {error && <p className="celebration-share__error" role="alert">{error}</p>}
   </section>;

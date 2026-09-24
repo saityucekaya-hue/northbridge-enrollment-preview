@@ -1,0 +1,193 @@
+/* Keep the next steps and the shareable video in one compact, balanced dialog. */
+.id-studio__celebration{
+  width:min(990px,100%);
+  grid-template-columns:minmax(0,33fr) minmax(0,67fr);
+  align-items:center;
+  gap:18px;
+  padding:20px;
+  overflow-x:hidden;
+}
+.id-studio__celebration-copy{
+  display:block;
+  align-self:center;
+  padding:4px 0;
+}
+.id-studio__party-row{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  height:30px;
+  margin-bottom:13px;
+  color:#d0aa62;
+}
+.id-studio__party-row svg{width:23px;height:23px;transform:rotate(-18deg)}
+.id-studio__party-row svg:nth-child(2){color:#72aaa0;transform:rotate(4deg)}
+.id-studio__party-row svg:nth-child(3){color:#a9b969;transform:rotate(20deg)}
+.id-studio__celebration .id-studio__success-kicker{margin:0 0 8px}
+.id-studio__celebration h2{
+  margin:0 0 17px;
+  font-size:clamp(1.65rem,2.35vw,2.25rem);
+  line-height:1.08;
+  letter-spacing:-.06em;
+}
+.id-studio__celebration .id-studio__success-actions{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  max-width:none;
+  margin:0;
+}
+.id-studio__next-choice{min-width:0}
+.id-studio__next-choice p{
+  margin:0 0 9px;
+  color:#556779;
+  font-size:.75rem;
+  line-height:1.5;
+}
+.id-studio__celebration .id-studio__destination{
+  width:100%;
+  height:65px;
+  padding:10px 12px;
+  border-radius:11px;
+}
+.id-studio__celebration .id-studio__destination img{width:46%}
+.id-studio__celebration .id-studio__destination small{font-size:.48rem}
+.id-studio__celebration .id-studio__destination strong{font-size:.82rem;max-width:21ch}
+.id-studio__choice-divider{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin:10px 0;
+  color:#718487;
+  font-size:.7rem;
+  font-weight:700;
+}
+.id-studio__choice-divider:before,.id-studio__choice-divider:after{content:"";height:1px;flex:1;background:#dce9e7}
+.id-studio__celebration .celebration-share{
+  align-self:center;
+  padding:15px;
+  border-radius:19px;
+  background:#f4faf9;
+}
+.id-studio__celebration .celebration-share__heading h3{margin:4px 0 2px;font-size:1.21rem}
+.id-studio__celebration .celebration-share__heading p{font-size:.68rem}
+.celebration-share__workspace{
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr) 83px;
+  align-items:center;
+  gap:9px;
+  margin-top:13px;
+}
+.id-studio__celebration .celebration-share__social{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:8px;
+}
+.id-studio__celebration .celebration-share__social a{
+  width:43px;
+  height:43px;
+  font-size:1.14rem;
+}
+.id-studio__celebration .celebration-share__stage{
+  height:326px;
+  min-height:0;
+  min-width:0;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle at 18% 15%,#dfeee9,transparent 53%),#e6f0f4;
+}
+.celebration-share__preview-wrap{position:relative;flex-shrink:1;max-width:100%;max-height:100%}
+.celebration-share__preview-wrap--story{width:171px;aspect-ratio:9/16}
+.celebration-share__preview-wrap--announcement{width:290px;aspect-ratio:1}
+.id-studio__celebration .celebration-share__card{
+  width:100%;
+  height:100%;
+  max-height:none;
+}
+.id-studio__celebration .celebration-share__download{
+  position:absolute;
+  z-index:4;
+  top:-10px;
+  right:-10px;
+  width:35px;
+  height:35px;
+  min-height:35px;
+  padding:0;
+  border-radius:50%;
+  border-color:#a9c8bb;
+  box-shadow:0 5px 14px #173c4633;
+}
+.id-studio__celebration .celebration-share__formats{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  width:83px;
+  max-width:none;
+  margin:0;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+}
+.id-studio__celebration .celebration-share__formats button{
+  width:100%;
+  min-height:58px;
+  flex:none;
+  flex-direction:column;
+  gap:2px;
+  padding:6px 2px;
+  border:1px solid #d2e3dc;
+  border-radius:10px;
+  background:#fff;
+  color:#355963;
+  font-size:.57rem;
+  line-height:1.15;
+}
+.id-studio__celebration .celebration-share__formats button.is-selected{
+  border-color:#227166;
+  background:#e8f3ef;
+  box-shadow:0 3px 10px #1c574b1a;
+}
+.celebration-share__formats button span{display:grid;gap:2px}
+.celebration-share__formats button small{display:block;font-size:.57rem}
+
+@media(max-width:760px){
+  .id-studio__celebration{
+    width:min(550px,100%);
+    grid-template-columns:minmax(0,1fr);
+    gap:15px;
+    padding:17px;
+  }
+  .id-studio__celebration-copy{padding:0 24px 0 0}
+  .id-studio__party-row{height:23px;margin-bottom:6px}
+  .id-studio__party-row svg{width:18px;height:18px}
+  .id-studio__celebration h2{font-size:1.72rem;margin-bottom:12px}
+  .id-studio__celebration .id-studio__success-actions{grid-template-columns:1fr}
+  .id-studio__next-choice p{font-size:.72rem;margin-bottom:7px}
+  .id-studio__celebration .id-studio__destination{height:57px}
+  .id-studio__choice-divider{margin:7px 0}
+  .id-studio__celebration .celebration-share{padding:12px}
+  .id-studio__celebration .celebration-share__stage{height:284px}
+  .celebration-share__preview-wrap--story{width:148px}
+  .celebration-share__preview-wrap--announcement{width:258px}
+}
+@media(max-width:410px){
+  .id-studio__overlay{padding:8px}
+  .id-studio__celebration{padding:12px;max-height:calc(100dvh - 16px)}
+  .celebration-share__workspace{grid-template-columns:32px minmax(0,1fr) 58px;gap:4px}
+  .id-studio__celebration .celebration-share__social a{width:33px;height:33px;font-size:.93rem}
+  .id-studio__celebration .celebration-share__formats{width:58px}
+  .id-studio__celebration .celebration-share__formats button{font-size:.5rem;min-height:53px}
+  .id-studio__celebration .celebration-share__stage{height:262px;padding:6px}
+  .celebration-share__preview-wrap--story{width:138px}
+  .celebration-share__preview-wrap--announcement{width:236px}
+  .celebration-share__announcement-brand{font-size:.59rem}
+  .celebration-share__announcement-seal{top:calc(46% - 16px);width:33px;height:33px;border-width:2px;font-size:1.25rem}
+  .celebration-share__announcement-copy{top:57%;gap:3px}
+  .celebration-share__announcement-copy small{font-size:.4rem}
+  .celebration-share__announcement-copy strong{font-size:.82rem;line-height:1.05}
+  .celebration-share__announcement-copy>span{font-size:.4rem}
+  .celebration-share__announcement-footer{font-size:.34rem;padding-top:4px}
+}
