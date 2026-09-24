@@ -1,7 +1,7 @@
 import { DotLottieReact, type DotLottie } from '@lottiefiles/dotlottie-react';
 import { useEffect, useState, type ReactNode } from 'react';
 
-export default function SkateboardLottie({ fallback }: { fallback: ReactNode }) {
+export default function ActivityLottie({ kind, fallback }: { kind: string; fallback: ReactNode }) {
   const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
   const [player, setPlayer] = useState<DotLottie | null>(null);
   const [firstFrameReady, setFirstFrameReady] = useState(false);
@@ -14,10 +14,11 @@ export default function SkateboardLottie({ fallback }: { fallback: ReactNode }) 
   }, [player]);
 
   if (reducedMotion) return <div className="college-life__lottie">{fallback}</div>;
-  return <div className="college-life__lottie" aria-hidden="true">
+
+  return <div className="college-life__lottie" aria-hidden="true" data-activity={kind}>
     {!firstFrameReady && fallback}
     <DotLottieReact
-      src={`${import.meta.env.BASE_URL}animations/skateboard.lottie`}
+      src={`${import.meta.env.BASE_URL}animations/${kind}.json`}
       autoplay
       loop
       dotLottieRefCallback={setPlayer}

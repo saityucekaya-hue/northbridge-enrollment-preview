@@ -82,6 +82,8 @@ describe('offer-led sample journey', () => {
     for (const [scene, activity] of collegeActivities.entries()) {
       rerender(<CollegeLifeTransition scene={scene} onSkip={onSkip} />);
       expect(screen.getByText(activity.label, { selector: '.college-life__scene-label strong' })).toBeInTheDocument();
+      expect(document.querySelector(`.college-life__lottie[data-activity="${activity.kind}"]`)).toBeInTheDocument();
+      expect(document.querySelector('.college-life__person')).not.toBeInTheDocument();
     }
     expect(screen.getByRole('progressbar', { name: 'Loading college life' })).toHaveAttribute('aria-valuenow', '100');
     await user.click(screen.getByRole('button', { name: 'Continue to sign-in setup' }));
@@ -132,6 +134,9 @@ describe('offer-led sample journey', () => {
     expect(screen.getByRole('button', { name: 'Continue with Google' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Continue with Apple' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Continue with Facebook' })).toBeInTheDocument();
+    for (const provider of ['Google', 'Apple', 'Facebook']) {
+      expect(screen.getByRole('button', { name: `Continue with ${provider}` }).querySelector('.journey__provider-logo svg')).toBeInTheDocument();
+    }
     await user.click(save);
     expect(screen.getByRole('heading', { name: 'Create your ID Card.' })).toBeInTheDocument();
     const profile = screen.getByLabelText('Your student profile');
@@ -182,6 +187,8 @@ describe('offer-led sample journey', () => {
     expect(story.querySelector('img')).toHaveAttribute('src', '/campus-northbridge.png');
     expect(story).toHaveTextContent('The gates are open');
     expect(within(celebration).queryByText('Jordan Lee')).not.toBeInTheDocument();
+    expect(within(celebration).getByRole('button', { name: 'See your pending enrollment tasks' }).querySelector('img')).toHaveAttribute('src', '/interest-quiet.png');
+    expect(within(celebration).getByRole('button', { name: 'Explore campus opportunities & events' }).querySelector('img')).toHaveAttribute('src', '/campus-northbridge.png');
     await user.click(screen.getByRole('button', { name: /Explore campus opportunities & events/i }));
     expect(screen.getByRole('heading', { name: 'Moments to look forward to' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Back to ID card' }));

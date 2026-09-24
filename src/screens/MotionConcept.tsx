@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import { ArrowLeft, ArrowRight, Check, ChevronDown, Download, Eye, EyeOff, FileText, GraduationCap, X } from 'lucide-react';
+import { FcGoogle } from 'react-icons/fc';
+import { FaApple, FaFacebookF } from 'react-icons/fa6';
 import { IdCardStudio } from './IdCardStudio';
 import { CollegeLifeTransition, collegeActivities } from '../components/CollegeLifeTransition';
 
@@ -199,7 +201,7 @@ export function MotionConcept() {
           <button className="journey__button journey__button--primary journey__save" type="submit" disabled={!canTrySave}>Save and continue <ArrowRight size={18} /></button>
           <div className="journey__separator"><span>or continue with</span></div>
           <div className="journey__providers">
-            {(['Google', 'Apple', 'Facebook'] as const).map((item) => <button key={item} type="button" onClick={() => chooseProvider(item)} aria-label={'Continue with ' + item}><span className={'journey__provider-logo journey__provider-logo--' + item.toLowerCase()} aria-hidden="true">{item === 'Facebook' ? 'f' : item === 'Apple' ? '●' : 'G'}</span>{item}</button>)}
+            {(['Google', 'Apple', 'Facebook'] as const).map((item) => <button key={item} type="button" onClick={() => chooseProvider(item)} aria-label={'Continue with ' + item}><span className={'journey__provider-logo journey__provider-logo--' + item.toLowerCase()} aria-hidden="true">{item === 'Facebook' ? <FaFacebookF /> : item === 'Apple' ? <FaApple /> : <FcGoogle />}</span>{item}</button>)}
           </div>
           <p className="journey__provider-footnote">Your college will confirm which sign-in options are available.</p>
         </form>

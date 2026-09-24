@@ -14,6 +14,7 @@ import './viewport-fit.css';
 import './northbridge-journey.css';
 import './journey-layout-polish.css';
 import './college-life-transition.css';
+import './celebration-actions.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

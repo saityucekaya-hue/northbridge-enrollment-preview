@@ -255,7 +255,16 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
         <p className="id-studio__success-kicker">A moment worth celebrating</p>
         <h2>Nice one, {firstName()}!</h2>
         <p>You’ve taken your first step toward Northbridge. Your ID card details are ready for university review. Where do you want to go next?</p>
-        <div className="id-studio__success-actions"><button ref={firstNextRef} type="button" className="motion-lab__primary" onClick={() => { setCompleteOpen(false); onDestination('enrollment'); }}>See your pending enrollment tasks <ArrowRight size={18} /></button><button type="button" className="id-studio__secondary" onClick={() => { setCompleteOpen(false); onDestination('opportunities'); }}>Explore campus opportunities & events <ArrowRight size={18} /></button></div>
+        <div className="id-studio__success-actions">
+          <button ref={firstNextRef} type="button" className="id-studio__destination" aria-label="See your pending enrollment tasks" onClick={() => { setCompleteOpen(false); onDestination('enrollment'); }}>
+            <img src={`${import.meta.env.BASE_URL}interest-quiet.png`} alt="" />
+            <span><small>YOUR NEXT STEPS</small><strong>Enrollment tasks</strong></span><ArrowRight size={19} aria-hidden="true" />
+          </button>
+          <button type="button" className="id-studio__destination" aria-label="Explore campus opportunities & events" onClick={() => { setCompleteOpen(false); onDestination('opportunities'); }}>
+            <img src={`${import.meta.env.BASE_URL}campus-northbridge.png`} alt="" />
+            <span><small>YOUR NEW WORLD</small><strong>Explore campus</strong></span><ArrowRight size={19} aria-hidden="true" />
+          </button>
+        </div>
       </div>
       <CelebrationShareCard />
     </section></div>}

@@ -64,3 +64,7 @@
   .journey__offer-actions{grid-column:1 / -1}
   .journey__quote{bottom:20vh}
 }
+.journey__provider-logo{display:inline-grid;place-items:center;width:20px;height:20px;font-size:1.15rem;line-height:1}
+.journey__provider-logo svg{width:20px;height:20px;display:block}
+.journey__provider-logo--apple{color:#111827}
+.journey__provider-logo--facebook{color:#1877f2}
