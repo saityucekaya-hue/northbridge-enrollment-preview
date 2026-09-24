@@ -1,0 +1,69 @@
+.offer-page-detailed{grid-template-columns:minmax(0,59%) minmax(0,41%);align-items:stretch}
+.offer-page-detailed .offer-content{padding-bottom:56px}
+.offer-page-detailed .offer-copy{max-width:870px}
+.offer-page-detailed .offer-copy h1{font-size:clamp(2.7rem,4.1vw,4.7rem);white-space:normal}
+.offer-page-detailed .offer-copy>.lead{max-width:61ch}
+.offer-card-detailed{padding:27px clamp(22px,2.5vw,35px) 26px}
+.offer-card-detailed .offer-card-top{align-items:center;margin-bottom:17px}
+.offer-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;margin:0}
+.offer-card-detailed .offer-overview>div{display:block;min-width:0;padding:11px 0 10px;border-bottom:1px solid var(--line)}
+.offer-overview dt{font-size:.69rem;line-height:1.4;color:var(--muted);margin-bottom:3px}
+.offer-overview dd{font-size:.85rem;line-height:1.45;font-weight:650;overflow-wrap:anywhere}
+.offer-decision-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:23px}
+.offer-decision-terms>div{display:flex;flex-direction:column;align-items:flex-start;gap:5px;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:15px 16px}
+.offer-decision-terms span{font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;font-weight:750;color:var(--accent)}
+.offer-decision-terms strong{font-size:.87rem;line-height:1.35}
+.offer-decision-terms small{font-size:.67rem;line-height:1.5;color:var(--muted)}
+.offer-costs{padding:25px 0 18px}
+.offer-section-heading{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:14px}
+.offer-section-heading p{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);line-height:1.4;margin:0 0 4px}
+.offer-section-heading h2{font-size:1.15rem;letter-spacing:-.025em;margin:0}
+.offer-section-heading>span{font-size:.65rem;color:var(--muted);white-space:nowrap}
+.offer-cost-list{margin:0;border-top:1px solid var(--line)}
+.offer-cost-list>div{display:flex;justify-content:space-between;gap:20px;padding:9px 1px;border-bottom:1px solid var(--line);font-size:.79rem;line-height:1.45}
+.offer-cost-list dt{color:var(--muted)}
+.offer-cost-list dd{font-weight:650;margin:0;text-align:right}
+.offer-cost-list .offer-cost-total{padding:13px 12px;background:var(--accent-soft);border-bottom:0;margin-top:8px;border-radius:5px;font-weight:700}
+.offer-cost-total dt,.offer-cost-total dd{font-weight:750;color:var(--ink)}
+.offer-cost-note{font-size:.67rem;line-height:1.55;color:var(--muted);margin:11px 0 0}
+.offer-deposit{border-top:1px solid var(--line);padding:18px 0 17px}
+.offer-deposit strong{font-size:.82rem}
+.offer-deposit p{font-size:.7rem;color:var(--muted);line-height:1.55;margin:4px 0 0}
+.offer-card-detailed .offer-card-bottom{margin-top:0}
+.offer-card-detailed .offer-card-bottom>p{font-size:.73rem;line-height:1.5}
+.offer-card-detailed .offer-actions{gap:14px}
+.offer-card-detailed .offer-actions .button{min-width:200px}
+
+.future-stage{position:sticky;top:0;align-self:start;height:100vh;min-height:730px;overflow:hidden;background:#142c37;color:#fff}
+.future-campus{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.future-stage:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,#0d2138df 0%,#0d2138ac 40%,#0d21387a 100%)}
+.future-stage-content{position:relative;z-index:2;min-height:100%;padding:clamp(38px,5vw,74px) clamp(26px,3.5vw,58px) 38px;display:flex;flex-direction:column;align-items:flex-start}
+.future-stage-heading{display:flex;align-items:center;gap:8px;color:#e0d5ff;font-size:.66rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:17px}
+.site-shell[data-theme='northbridge'] .future-stage-heading{color:#dceba8}
+.future-stage h2{max-width:14ch;font-size:clamp(1.75rem,2.55vw,2.65rem);line-height:1.15;font-weight:650;margin:0 0 12px;letter-spacing:-.04em}
+.future-stage-content>p{max-width:31ch;font-size:.78rem;line-height:1.58;color:#f2f4f5e6;margin-bottom:25px}
+.diploma-preview{width:min(100%,390px);background:#fffdf7;color:#1c2940;box-shadow:0 24px 60px #06131b82,0 2px 8px #06131b55;padding:12px;transform:rotate(-2deg);transform-origin:center;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .45s ease,visibility .45s ease;animation:diploma-enter .8s cubic-bezier(.2,.8,.2,1) both}
+.diploma-preview.is-hidden{opacity:0;visibility:hidden;transform:translateY(24px) rotate(-7deg) scale(.94)}
+.diploma-preview.is-visible:hover{transform:translateY(-5px) rotate(0deg)}
+.diploma-border{min-height:315px;border:1px solid #b8a978;outline:1px solid #d9cfad;outline-offset:-7px;padding:24px 17px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;gap:7px;background:radial-gradient(circle at 50% 12%,#fff 0%,#fffdf7 70%,#f7f0df 100%)}
+.diploma-caption{font-size:.48rem;text-transform:uppercase;letter-spacing:.14em;font-weight:750;color:#655a4f}
+.diploma-mark{font-family:Georgia,serif;color:var(--accent);font-size:2.15rem;line-height:1;margin:5px 0 2px}
+.diploma-institution{font-family:Georgia,'Times New Roman',serif;font-size:1.22rem;font-weight:600;line-height:1.15}
+.site-shell[data-theme='audentra'] .diploma-institution{font-family:'Montserrat Variable',Arial,sans-serif;font-size:1.04rem}
+.diploma-divider{height:1px;width:63px;background:#bcae86;margin:5px 0 3px}
+.diploma-intro{font-family:Georgia,serif;font-size:.78rem;font-style:italic;color:#5f6270}
+.diploma-name{font-family:Georgia,'Times New Roman',serif;font-size:1.78rem;font-weight:500;line-height:1.2}
+.diploma-degree{font-family:Georgia,serif;font-size:.97rem;line-height:1.35}
+.diploma-footer{font-size:.52rem;text-transform:uppercase;letter-spacing:.12em;color:#817861;margin-top:13px}
+.future-toggle{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:transparent;border:1px solid #ffffffa8;color:#fff;border-radius:5px;padding:12px 16px;font-size:.74rem;font-weight:650;min-height:45px}
+.future-toggle:hover{background:#ffffff24}
+.future-toggle svg{transition:transform .2s ease}
+.future-toggle:hover svg{transform:translateX(3px)}
+.offer-page-detailed .offer-dialog{max-height:min(90vh,850px)}
+@keyframes diploma-enter{from{opacity:0;transform:translateY(20px) rotate(-7deg) scale(.95)}to{opacity:1;transform:rotate(-2deg)}}
+
+@media(max-width:1180px){.offer-page-detailed{grid-template-columns:minmax(0,60%) minmax(0,40%)}.future-stage-content{padding-left:27px;padding-right:27px}.future-stage h2{font-size:1.95rem}.diploma-border{min-height:290px;padding:19px 12px}.offer-page-detailed .offer-content{padding-left:28px;padding-right:28px}}
+@media(max-width:880px){.offer-page-detailed{display:block}.future-stage{position:relative;height:auto;min-height:0}.future-stage-content{min-height:645px;padding:44px 30px 40px;align-items:center;text-align:center}.future-stage h2{max-width:18ch}.future-stage-content>p{max-width:40ch}.diploma-preview{width:min(100%,390px)}.offer-page-detailed .offer-copy{max-width:670px}.offer-page-detailed .offer-content{padding:0 24px 45px}}
+@media(max-width:620px){.offer-page-detailed .offer-content{padding:0 20px 37px}.offer-page-detailed .offer-copy h1{font-size:clamp(2.6rem,11vw,3.6rem)}.offer-card-detailed{padding:20px 18px}.offer-overview{column-gap:15px}.offer-overview dd{font-size:.76rem}.offer-decision-terms{grid-template-columns:1fr}.offer-section-heading h2{font-size:1.1rem}.offer-card-detailed .offer-actions{display:grid}.offer-card-detailed .offer-actions .button{width:100%}.future-stage-content{min-height:600px;padding:40px 21px}.future-stage h2{font-size:2rem}.diploma-border{min-height:300px}}
+@media(max-width:390px){.offer-overview{grid-template-columns:1fr}.offer-card-detailed .offer-overview>div{display:grid;grid-template-columns:35% 65%;align-items:center;gap:6px;padding:9px 0}.offer-overview dt{margin:0}.offer-card-detailed .offer-card-top>strong{font-size:.9rem}.future-stage h2{font-size:1.8rem}}
+@media(prefers-reduced-motion:reduce){.diploma-preview{animation:none;transition:none}.future-toggle svg{transition:none}}

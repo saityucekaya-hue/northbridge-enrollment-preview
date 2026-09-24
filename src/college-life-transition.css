@@ -1,0 +1,43 @@
+.college-life{position:fixed;inset:0;z-index:40;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 78% 30%,#397b73 0%,transparent 32%),radial-gradient(circle at 14% 82%,#2b5866 0%,transparent 35%),#102c38;color:#fff}
+.college-life:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#ffffff0a 0%,transparent 42%),repeating-linear-gradient(115deg,transparent 0 92px,#ffffff04 93px 94px);pointer-events:none}
+.college-life__layout{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.95fr);align-items:center;gap:clamp(20px,4vw,70px);width:min(1100px,calc(100% - 80px));min-height:min(600px,85dvh)}
+.college-life__copy{position:relative;z-index:2}
+.college-life__accepted{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid #c7e0cf73;border-radius:99px;background:#e6f5d914;color:#d6eebc;font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;animation:college-pop .55s cubic-bezier(.2,1.4,.4,1) both}
+.college-life__accepted svg{padding:2px;border-radius:50%;background:#d6eebc;color:#17413f}
+.college-life h2{margin:25px 0 15px;font-size:clamp(3.7rem,6vw,6.4rem);line-height:.96;letter-spacing:-.075em}
+.college-life h2 em{color:#d6e6b1;font-family:'Palatino Linotype','Book Antiqua',Georgia,serif;font-weight:400;letter-spacing:-.06em}
+.college-life__copy>p{margin:0 0 38px;color:#d3e3e2;font-size:clamp(1rem,1.5vw,1.25rem)}
+.college-life__progress{height:13px;overflow:hidden;border:1px solid #ffffff55;border-radius:99px;background:#ffffff18;box-shadow:inset 0 2px 8px #0319214d}
+.college-life__progress span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#b5d8ad,#e4d398);box-shadow:0 0 20px #d5e7bca6;transition:width .48s ease}
+.college-life__activity-list{display:flex;flex-wrap:wrap;gap:9px 14px;margin:17px 0 25px;color:#b9cfcf;font-size:.7rem;font-weight:700;letter-spacing:.02em}
+.college-life__activity-list span{opacity:.48;transition:color .3s,opacity .3s,transform .3s}
+.college-life__activity-list .is-active{color:#f3ebc7;opacity:1;transform:translateY(-2px)}
+.college-life__activity-list .is-done{color:#bfe1ca;opacity:.85}
+.college-life__copy button{display:inline-flex;align-items:center;gap:9px;padding:10px 0;border:0;background:transparent;color:#f3f7ee;font:700 .79rem Montserrat,Arial,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:5px}
+.college-life__copy button:hover{color:#e9dbad}
+.college-life__copy button:focus-visible{outline:2px solid #e9dbad;outline-offset:5px}
+.college-life__visual{position:relative;display:grid;place-items:center;min-height:520px}
+.college-life__visual:before{content:'';position:absolute;width:min(100%,520px);aspect-ratio:1;border:1px solid #ffffff37;border-radius:50%;background:radial-gradient(circle,#e4f0d7 0%,#b7d7c5 49%,#72a499 50%,#72a499 58%,transparent 59%);box-shadow:0 25px 90px #00151d80,0 0 0 28px #ffffff0c;animation:college-halo 1.8s ease-in-out infinite alternate}
+.college-life__scene{position:relative;display:grid;justify-items:center;width:min(100%,510px);animation:college-scene .45s cubic-bezier(.2,.9,.3,1) both}
+.college-life__figure{width:min(92%,430px);overflow:visible;filter:drop-shadow(0 15px 12px #1235352b)}
+.college-life__person{transform-origin:160px 260px;animation:college-bob .65s ease-in-out infinite alternate}
+.college-life__arm--right{transform-origin:194px 133px;animation:college-wave .9s ease-in-out infinite alternate}
+.college-life__scene-label{display:flex;align-items:center;gap:12px;min-width:195px;margin-top:-7px;padding:13px 20px;border:1px solid #ffffffd9;border-radius:14px;background:#fffdf5;color:#19343d;box-shadow:0 13px 35px #08242d4a}
+.college-life__scene-label svg{color:#24655d}
+.college-life__scene-label strong,.college-life__scene-label span{display:block}
+.college-life__scene-label strong{font-size:1.12rem}
+.college-life__scene-label span{color:#65757b;font-size:.67rem}
+.college-life__confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.college-life__confetti i{position:absolute;left:var(--left);top:-8%;width:8px;height:17px;border-radius:2px;background:#d6eebc;transform:rotate(calc(var(--piece) * 33deg));animation:college-confetti var(--duration) linear var(--delay) infinite}
+.college-life__confetti i:nth-child(3n){background:#e1bd80;width:10px;height:10px;border-radius:50%}
+.college-life__confetti i:nth-child(4n){background:#92d6d2}
+.college-life__confetti i:nth-child(5n){background:#eabec2}
+@keyframes college-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@keyframes college-halo{to{transform:scale(1.04)}}
+@keyframes college-scene{from{opacity:0;transform:translateY(30px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes college-bob{to{transform:translateY(-7px)}}
+@keyframes college-wave{to{transform:rotate(-12deg)}}
+@keyframes college-confetti{to{top:110%;transform:translateX(var(--drift)) rotate(760deg)}}
+@media(max-width:760px){.college-life__layout{grid-template-columns:1fr;gap:0;width:min(550px,calc(100% - 42px));min-height:0}.college-life__copy{order:2;text-align:center}.college-life h2{margin:14px 0 9px;font-size:clamp(2.8rem,9vw,4.2rem)}.college-life__copy>p{margin-bottom:20px}.college-life__visual{order:1;min-height:260px}.college-life__visual:before{width:260px}.college-life__figure{width:210px}.college-life__scene-label{margin-top:-20px;padding:7px 12px}.college-life__activity-list{justify-content:center;margin:12px 0}.college-life__accepted{font-size:.65rem}}
+@media(max-height:690px) and (min-width:761px){.college-life__visual{min-height:390px}.college-life__visual:before{width:390px}.college-life__figure{width:330px}.college-life h2{font-size:4.2rem}}
+@media(prefers-reduced-motion:reduce){.college-life__accepted,.college-life__visual:before,.college-life__scene,.college-life__person,.college-life__arm--right,.college-life__confetti i{animation:none}.college-life__progress span{transition:none}}

@@ -1,0 +1,101 @@
+.journey{--ml-iris:#235b56;--nb-green:#235b56;--nb-deep:#194842;--nb-gold:#cfb279}
+.journey__header{background:#183238}
+.journey__brand{gap:11px}
+.journey__brand-monogram{width:35px;height:35px;display:grid;place-items:center;flex:none;border:1.5px solid #d5c08d;border-radius:50%;color:#e8d4a2;font:600 1.25rem Georgia,serif;box-shadow:inset 0 0 0 3px #183238,inset 0 0 0 4px #d5c08d}
+.journey__brand strong{font:600 1.25rem Georgia,serif;letter-spacing:-.035em}
+.journey__brand strong span{font-weight:400}
+.journey h1 span,.journey__welcome-note span{color:var(--nb-green)}
+.journey__button--primary{background:var(--nb-green);border-color:var(--nb-green);box-shadow:0 12px 24px #235b5627}
+.journey__button--primary:not(:disabled):hover{background:var(--nb-deep);box-shadow:0 15px 30px #235b5633}
+.journey__button:focus-visible,.journey button:focus-visible,.journey a:focus-visible{outline-color:#64a59b}
+.journey__offer-card-top>svg{color:var(--nb-green)}
+.journey__field input:focus{outline-color:var(--nb-green)}
+.journey__progress li{min-width:0;gap:0}
+.journey__progress-step{display:inline-flex;align-items:center;gap:11px;min-width:0;flex:none;margin:0;padding:4px 6px 4px 0;border:0;border-radius:6px;background:transparent;color:inherit;font:inherit;text-align:left;white-space:nowrap}
+.journey__progress-step:not(:disabled){cursor:pointer}
+.journey__progress-step:not(:disabled):hover>span:last-child{text-decoration:underline;text-underline-offset:3px}
+.journey__progress-step:disabled{cursor:default;opacity:1}
+.journey__progress li.is-visited{color:var(--nb-green)}
+.journey__progress .is-active .journey__progress-number{background:var(--nb-green);border-color:var(--nb-green);box-shadow:0 0 0 5px #235b5618}
+.journey__progress .is-done .journey__progress-number{background:var(--nb-green);border-color:var(--nb-green)}
+.journey__progress .is-visited .journey__progress-number{background:#e8f2e9;border-color:#a5c7be;color:var(--nb-green)}
+.journey__offer-visual{isolation:isolate}
+.journey__offer-visual:after{inset:48% 0 0;background:linear-gradient(0deg,#071e2de0 0%,#0a263878 55%,transparent 100%)}
+.journey__diploma{z-index:2;top:12%;left:5%;right:auto;bottom:auto;display:block;width:min(54%,320px);height:auto;aspect-ratio:1.3;perspective:800px;animation:journey-diploma-in .8s cubic-bezier(.2,.8,.2,1) 1s both}
+.journey__diploma-inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;aspect-ratio:1.25;min-height:0;padding:15px 17px;border:7px double #bca46e;outline:1px solid #d9cba5;outline-offset:-13px;border-radius:2px;background:radial-gradient(circle at center,#fffef8 0%,#fbf5e7 75%,#ede2c9 100%);color:#203642;text-align:center;box-shadow:0 25px 45px #07182785,0 4px 0 #c1aa72;transform:rotate(-6deg)}
+.journey__diploma-corners{position:absolute;inset:17px;border:1px solid #c9b987a6;pointer-events:none}
+.journey__diploma-heading{display:flex;align-items:center;justify-content:center;gap:9px;position:relative;z-index:1;width:100%}
+.journey__diploma-heading>div{display:grid;gap:3px;text-align:left}
+.journey__diploma-heading>div>span{font:600 clamp(.72rem,1vw,.94rem) Georgia,serif;white-space:nowrap}
+.journey__diploma-heading small{font:700 .34rem Montserrat,Arial,sans-serif;letter-spacing:.13em;color:#876f47;white-space:nowrap}
+.journey__diploma-seal{display:grid;place-items:center;flex:none;width:37px;height:37px;margin:0;border:3px double #a98b50;border-radius:50%;color:#8c7045;font:600 1.25rem Georgia,serif}
+.journey__diploma-award{max-width:29ch;margin:14px 0 0!important;color:#5e625d;font:italic .55rem/1.35 Georgia,serif!important}
+.journey__diploma-inner h2{position:relative;z-index:1;margin:8px 0 2px;font:500 clamp(1.35rem,2.1vw,1.9rem)/1 Georgia,serif;color:#1c3542}
+.journey__diploma-degree{position:relative;z-index:1;margin:0!important;font:.65rem/1.25 Georgia,serif!important}
+.journey__diploma-rule{width:48%;height:1px;margin:12px 0 7px;background:#bca46e}
+.journey__diploma-foot{display:flex;align-items:center;justify-content:space-between;gap:7px;width:74%;color:#7a684d;font:700 .36rem Montserrat,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.journey__diploma-foot span:nth-child(2){font-size:.75rem}
+.journey__quote{z-index:3;left:0;right:0;bottom:0;display:grid;grid-template-columns:28px minmax(0,1fr);gap:0 8px;width:100%;min-height:190px;box-sizing:border-box;margin:0;padding:22px clamp(22px,3vw,38px) 21px;border:0;border-top:1px solid #ffffff4d;border-radius:0;background:linear-gradient(110deg,#0d2939ed,#0b2637db);color:#fff;box-shadow:0 -18px 45px #07182730;backdrop-filter:blur(9px);animation:journey-panel-in .8s ease 1.5s both}
+.journey__quote>span{grid-row:1 / span 2;display:block;color:#e1c992;font:3.2rem/.85 Georgia,serif}
+.journey__quote p{grid-column:2;max-width:none;margin:0;font:italic clamp(.98rem,1.33vw,1.27rem)/1.35 Georgia,serif;text-wrap:balance}
+.journey__quote footer{grid-column:2;justify-self:end;align-self:end;margin-top:10px;color:#e8e2d3;font-size:.62rem;font-weight:700;letter-spacing:.02em;text-align:right}
+.journey__quote footer span{font-weight:500;color:#cdd7d5}
+.journey__decline-symbol{background:#e8f2e9;color:var(--nb-green)}
+.journey__decline-dialog input{accent-color:var(--nb-green)}
+.journey__decline-dialog fieldset label:has(input:checked){border-color:var(--nb-green);background:#f0f6f3}
+.journey .motion-lab__primary{background:var(--nb-green);border-color:var(--nb-green);box-shadow:0 12px 28px #235b562c}
+.journey .motion-lab__primary:hover{background:var(--nb-deep);box-shadow:0 18px 30px #235b563b}
+.journey .id-studio__avatar-camera{background:var(--nb-green)}
+.journey .id-studio__avatar:focus-visible,.journey .id-studio__crop-canvas:focus-visible{outline-color:var(--nb-green)}
+.journey .id-studio__document-tile:hover,.journey .id-studio__document-tile:focus-within{border-color:var(--nb-green);background:#f2f8f5}
+.journey .id-studio__document-tile:focus-within{outline-color:var(--nb-green)}
+.journey .id-studio__zoom input{accent-color:var(--nb-green)}
+.journey .id-studio__complete:disabled{background:var(--nb-green);border-color:var(--nb-green)}
+.journey .id-studio__card-wave{border-color:#235b560e;box-shadow:0 0 0 43px #c9ad7317}
+.journey .id-studio__secondary{border-color:var(--nb-green);color:var(--nb-green)}
+.journey .id-studio__secondary:hover{background:#eef6f2}
+.journey .id-studio__confetti span{background:var(--nb-green)}
+.journey .celebration-share{background:#f2f7f3;border-color:#dce9df}
+.journey .celebration-share__eyebrow,.journey .celebration-share__caption button{color:var(--nb-green)}
+.journey .celebration-share__formats{background:#e2ede7}
+.journey .celebration-share__formats button.is-selected{color:var(--nb-deep)}
+.journey .celebration-share__share{background:var(--nb-green);border-color:var(--nb-green)}
+.journey .celebration-share__share:hover:not(:disabled){background:var(--nb-deep)}
+.journey .celebration-share__download{border-color:#a6c7b9;color:var(--nb-green)}
+.journey .celebration-share__download:hover:not(:disabled){background:#eaf3ed}
+@media(min-width:1000px){
+  .journey__offer,.journey__access{min-height:calc(100dvh - 121px)}
+  .journey__offer-visual{top:121px;height:calc(100dvh - 121px)}
+  .journey__access-visual{top:auto;height:calc(100dvh - 121px)}
+  .journey .id-studio{min-height:calc(100dvh - 121px)}
+}
+@media(max-width:760px){
+  .journey__brand strong{font-size:1rem}
+  .journey__brand-monogram{width:30px;height:30px;font-size:1.08rem}
+  .journey__progress-step{flex-direction:column;align-items:flex-start;gap:6px;padding:0}
+  .journey__diploma{top:9%;left:5%;width:min(56%,280px)}
+  .journey__quote{min-height:195px;padding:18px 18px 19px;grid-template-columns:20px minmax(0,1fr)}
+  .journey__quote>span{font-size:2.5rem}
+  .journey__quote p{font-size:clamp(.88rem,2.5vw,1.1rem)}
+}
+@media(max-width:480px){
+  .journey__brand{gap:7px}
+  .journey__brand strong{font-size:.85rem}
+  .journey__brand-monogram{width:26px;height:26px;font-size:.95rem}
+  .journey__progress-step{white-space:normal}
+  .journey__diploma{top:7%;width:min(60%,225px)}
+  .journey__diploma-inner{padding:10px 9px;border-width:5px}
+  .journey__diploma-corners{inset:11px}
+  .journey__diploma-heading{gap:4px}
+  .journey__diploma-heading>div>span{font-size:.6rem}
+  .journey__diploma-heading small{font-size:.25rem;letter-spacing:.07em}
+  .journey__diploma-seal{width:27px;height:27px;font-size:.9rem;border-width:2px}
+  .journey__diploma-award{font-size:.4rem!important;margin-top:8px!important}
+  .journey__diploma-inner h2{font-size:1.05rem;margin-top:4px}
+  .journey__diploma-degree{font-size:.47rem!important}
+  .journey__diploma-rule{margin:7px 0 4px}
+  .journey__diploma-foot{font-size:.26rem}
+  .journey__quote{min-height:170px}
+  .journey__quote p{font-size:.91rem}
+  .journey__quote footer{font-size:.61rem}
+}

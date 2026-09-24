@@ -1,0 +1,133 @@
+/* The welcome scene translates the supplied portrait concept to a wide browser. */
+.journey__welcome{position:relative;display:block;min-height:calc(100dvh - 64px);overflow:hidden;background:#edf1ee}
+.journey[data-chapter='arrival'] .journey__header{background:#fff;color:#183238}
+.journey[data-chapter='arrival'] .journey__brand-monogram{background:#183238}
+.journey[data-chapter='arrival'] .journey__exit{color:#183238}
+.journey__welcome-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 52%;animation:journey-image-in 1.25s ease both}
+.journey__welcome:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#fffefd 0%,#fffefdee 27%,#fffefd55 43%,#fffefd00 65%),linear-gradient(0deg,#09253052 0%,transparent 30%);pointer-events:none}
+.journey__welcome-content{position:relative;z-index:2;box-sizing:border-box;min-height:calc(100dvh - 64px);width:54%;padding:clamp(45px,7vh,90px) 20px 28px clamp(32px,4vw,72px);display:flex;align-items:flex-start;justify-content:flex-start;flex-direction:column}
+.journey__welcome h1{max-width:14ch;margin:0 0 16px;font-size:clamp(3.25rem,4.6vw,5.4rem);line-height:1.02}
+.journey__welcome-content>p{max-width:24ch;margin:0;color:#334b5b;font-size:clamp(1.18rem,1.8vw,1.65rem);line-height:1.38}
+.journey__welcome-handwriting{margin:23px 0 0 20px;color:#486579;font:italic 1.55rem/1.04 Georgia,serif;letter-spacing:.01em;transform:rotate(-8deg)}
+.journey__welcome-handwriting span{display:block;width:67px;height:2px;margin:14px 0 0 52px;background:#9bb354;transform:rotate(-9deg)}
+.journey__welcome-next{width:min(490px,100%);margin-top:auto}
+.journey__welcome-highlights{display:grid;grid-template-columns:1.1fr .9fr;gap:0;padding:14px 16px;border:1px solid #ffffffbf;border-radius:15px;background:#ffffffed;box-shadow:0 15px 34px #13314418;backdrop-filter:blur(9px)}
+.journey__welcome-highlights>div{display:flex;align-items:center;gap:10px;min-width:0}
+.journey__welcome-highlights>div+div{border-left:1px solid #d8e0dd;padding-left:13px}
+.journey__welcome-highlights svg,.journey__welcome-coin{flex:none;width:38px;height:38px;padding:8px;border-radius:50%;background:#e2edb9;color:#163842}
+.journey__welcome-coin{display:grid;place-items:center;font:700 1.4rem Georgia,serif}
+.journey__welcome-highlights strong,.journey__welcome-highlights small{display:block}
+.journey__welcome-highlights strong{color:#172744;font-size:.79rem;line-height:1.2}
+.journey__welcome-highlights small{margin-top:3px;color:#607182;font-size:.61rem;line-height:1.25}
+.journey__welcome .journey__button{width:100%;min-height:57px;margin-top:14px;border-radius:30px;font-size:.95rem}
+.journey__welcome-mini-progress{display:flex;gap:0;justify-content:space-between;align-items:center;margin:20px 10px 0;color:#3e5662;font-size:.7rem;font-weight:680}
+.journey__welcome-mini-progress span{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.journey__welcome-mini-progress span:before{content:'';width:11px;height:11px;flex:none;border:2px solid #c3cfcd;border-radius:50%;background:#fff}
+.journey__welcome-mini-progress .is-current:before{border-color:#235b56;background:#235b56}
+.journey__welcome-image{position:absolute;z-index:2;top:auto;left:auto;right:clamp(30px,5vw,90px);bottom:clamp(96px,13vh,135px);width:min(39vw,570px);height:340px;min-height:0;overflow:visible;background:transparent}
+.journey__welcome-image:after{display:none}
+.journey__welcome-envelope{position:absolute;inset:13px 9px 19px 7px;border-radius:9px;background:linear-gradient(135deg,#0a6666,#0b4244);box-shadow:0 20px 48px #091d2680;transform:rotate(7deg)}
+.journey__welcome-envelope:after{content:'';position:absolute;inset:0;clip-path:polygon(0 0,50% 62%,100% 0);border-radius:9px;background:#158181;opacity:.45}
+.journey__welcome-letter{position:relative;display:flex;flex-direction:column;box-sizing:border-box;width:100%;height:100%;padding:25px 30px 21px;border:1px solid #e7e2d7;border-radius:9px;background:linear-gradient(135deg,#fff 0%,#fffdf8 70%,#f9f5eb 100%);color:#1b3043;box-shadow:0 20px 44px #0b252d42;transform:rotate(-3deg);animation:journey-panel-in .8s ease .3s both}
+.journey__welcome-letter-top,.journey__welcome-letter-top>div,.journey__welcome-letter-foot{display:flex;align-items:center;justify-content:space-between;gap:9px}
+.journey__welcome-letter-top>div{justify-content:flex-start}
+.journey__welcome-letter-top .journey__brand-monogram{width:31px;height:31px;background:#183238;box-shadow:inset 0 0 0 3px #183238,inset 0 0 0 4px #d5c08d;font-size:1rem}
+.journey__welcome-letter-top strong{font:600 1.05rem/1 Georgia,serif}
+.journey__welcome-letter-top>span{color:#235b56;font-size:.57rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.journey__welcome-letter-body{margin:auto 0;font:1rem/1.5 Georgia,serif}
+.journey__welcome-letter-body p{max-width:40ch;margin:0 0 12px}
+.journey__welcome-letter-foot{align-items:end;padding-top:11px;border-top:1px solid #d9d2c1;color:#365461;font:italic .8rem/1.2 Georgia,serif}
+.journey__welcome-letter-foot small{font:600 .48rem Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.journey__welcome-tower{display:grid;place-items:center;width:54px;height:54px;border:2px double #c6b58c;border-radius:50%;color:#9e885b;font:600 2rem Georgia,serif}
+
+/* Quotation sits directly on the photograph, with larger editorial type. */
+.journey__quote{min-height:172px;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;grid-template-columns:32px minmax(0,1fr);padding:19px clamp(24px,3vw,43px) 20px;text-shadow:0 2px 9px #061d2bba}
+.journey__quote p{font-size:clamp(1.32rem,1.7vw,1.72rem);line-height:1.25}
+.journey__quote footer{font-size:.68rem}
+
+/* ID form and live cards share one row, as on the other split screens. */
+.journey .id-studio{max-width:none;min-height:calc(100dvh - 121px);grid-template-columns:minmax(0,50%) minmax(0,50%);gap:0;padding:0;align-items:stretch}
+.journey .id-studio__form{box-sizing:border-box;width:100%;max-width:none;padding:20px clamp(25px,3vw,48px) 24px}
+.id-studio__identity-row{display:flex;align-items:end;gap:17px;min-width:0;margin:15px 0 16px}
+.journey .id-studio__profile{width:84px;height:84px;flex:none;margin:0;align-items:center;justify-content:center}
+.journey .id-studio__avatar{width:76px;height:76px;margin:0;left:auto;bottom:auto}
+.journey .id-studio__legal-field{flex:1;min-width:0;margin:0 0 7px}
+.journey .id-studio__preview{box-sizing:border-box;position:relative;top:auto;min-height:calc(100dvh - 121px);margin:0;padding:27px clamp(24px,3vw,45px);background:radial-gradient(circle at 80% 15%,#326668 0%,transparent 48%),linear-gradient(140deg,#193a43 0%,#102b37 70%,#0b2531 100%);color:#fff}
+.journey .id-studio__preview-heading{max-width:450px;margin:0 auto 11px}
+.journey .id-studio__preview-heading>div>span,.journey .id-studio__live-dot{color:#bdddcf}
+.journey .id-studio__live-dot:before{background:#a3d4b3;box-shadow:0 0 0 4px #a3d4b326}
+.journey .id-studio__face-label{color:#d8e7e3;width:min(100%,430px)}
+.journey .id-studio__card{width:min(100%,430px)}
+
+@media(max-width:1000px){
+  .journey__welcome-content{width:57%}
+  .journey__welcome-image{right:27px;width:39vw;height:305px}
+  .journey__welcome-letter{padding:20px 23px}
+  .journey__welcome-letter-body{font-size:.86rem}
+  .journey .id-studio__card{width:min(100%,370px)}
+}
+@media(max-width:760px){
+  .journey__welcome{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+  .journey__welcome-backdrop{object-position:61% center}
+  .journey__welcome:before{background:linear-gradient(180deg,#fffefdfc 0%,#fffefdca 28%,#fffefd00 60%,#fffefd 95%)}
+  .journey__welcome-content{display:contents}
+  .journey__welcome h1,.journey__welcome-content>p,.journey__welcome-handwriting,.journey__welcome-next{position:relative;z-index:2;box-sizing:border-box}
+  .journey__welcome h1{order:1;width:100%;max-width:16ch;margin:0;padding:48px 22px 0;font-size:clamp(2.8rem,7vw,4.2rem)}
+  .journey__welcome-content>p{order:2;width:100%;max-width:28ch;margin:12px 0 0;padding:0 22px;font-size:1.14rem}
+  .journey__welcome-handwriting{order:3;margin:20px 0 0 32px;font-size:1.3rem}
+  .journey__welcome-image{order:4;position:relative;inset:auto;width:min(100% - 40px,510px);height:300px;margin:135px auto 0}
+  .journey__welcome-next{order:5;width:min(100% - 40px,510px);margin:25px auto 33px}
+  .journey .id-studio{display:block}
+  .journey .id-studio__form{padding:24px 21px 30px}
+  .journey .id-studio__preview{min-height:0;margin:0;padding:27px 21px 42px;max-width:none}
+  .journey .id-studio__card{width:min(100%,430px)}
+  .journey__quote{min-height:170px;padding:15px 20px}
+  .journey__quote p{font-size:clamp(1.04rem,2.55vw,1.27rem)}
+}
+@media(max-width:480px){
+  .journey__welcome h1{font-size:clamp(2.65rem,10vw,3.4rem)}
+  .journey__welcome-image{height:270px;margin-top:118px}
+  .journey__welcome-letter{padding:17px 19px}
+  .journey__welcome-letter-body{font-size:.78rem}
+  .journey__welcome-letter-top strong{font-size:.85rem}
+  .journey__welcome-letter-top>span{font-size:.46rem}
+  .journey__welcome-highlights{padding:11px;gap:3px}
+  .journey__welcome-highlights svg,.journey__welcome-coin{width:31px;height:31px;padding:5px}
+  .journey__welcome-highlights strong{font-size:.68rem}
+  .journey__welcome-highlights small{font-size:.55rem}
+  .journey__welcome-mini-progress{font-size:.58rem;margin-inline:0}
+  .id-studio__identity-row{gap:10px}
+  .journey .id-studio__profile{width:72px;height:76px}
+  .journey .id-studio__avatar{width:68px;height:68px}
+  .journey .id-studio__legal-field{margin-bottom:3px}
+  .journey .id-studio__field input{font-size:.72rem;padding-inline:10px}
+  .journey__quote p{font-size:1rem}
+  .journey__quote footer{font-size:.58rem}
+}
+/* The envelope opens first; the offer sheet rises out and settles above its pocket. */
+.journey__welcome-content{padding-top:clamp(70px,10vh,112px)}
+.journey__welcome-image{perspective:1100px}
+.journey__welcome-envelope{z-index:1;inset:auto 3% 0;width:94%;height:54%;border-radius:0;background:none;box-shadow:none;transform:rotate(3deg)}
+.journey__welcome-envelope:after{display:none}
+.journey__welcome-envelope-back{position:absolute;inset:0;border-radius:10px;background:linear-gradient(135deg,#197b78,#0d4e53);box-shadow:0 18px 36px #081e2880}
+.journey__welcome-envelope-flap{position:absolute;z-index:2;inset:0 0 auto;height:72%;clip-path:polygon(0 0,50% 78%,100% 0);background:linear-gradient(150deg,#25928b,#176264);transform-origin:top center;animation:welcome-flap-open .85s ease .2s both}
+.journey__welcome-letter{position:absolute;z-index:3;left:5%;bottom:18%;width:90%;height:92%;transform:rotate(-3deg);animation:welcome-letter-rise 1.45s cubic-bezier(.2,.8,.2,1) .68s both}
+.journey__welcome-envelope-front{position:absolute;z-index:4;left:3%;right:3%;bottom:0;height:26%;border-radius:0 0 10px 10px;background:linear-gradient(150deg,#208882,#0b5155);box-shadow:0 13px 30px #071f294d;clip-path:polygon(0 0,50% 72%,100% 0,100% 100%,0 100%);transform:rotate(3deg)}
+@keyframes welcome-flap-open{0%{transform:rotateX(0deg)}100%{transform:rotateX(-165deg)}}
+@keyframes welcome-letter-rise{0%{opacity:.7;transform:translateY(69%) rotate(3deg)}50%{opacity:1}100%{opacity:1;transform:translateY(0) rotate(-3deg)}}
+
+/* Light editorial lettering stays directly on the photograph. */
+.journey__quote{min-height:210px;align-content:end;padding-bottom:26px;grid-template-columns:36px minmax(0,1fr)}
+.journey__quote p{font-family:'Palatino Linotype','Book Antiqua',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.7rem,2.15vw,2.15rem);line-height:1.14;letter-spacing:-.027em;text-wrap:pretty}
+.journey__quote footer{font-size:.7rem}
+
+/* Increase the diploma without shifting its anchor on the graduate image. */
+.journey__diploma{width:min(58%,350px)}
+.journey__diploma-heading>div>span{font-size:clamp(.85rem,1.1vw,1rem)}
+.journey__diploma-award{font-size:.65rem!important}
+.journey__diploma-degree{font-size:.76rem!important}
+.journey__diploma-foot{font-size:.4rem}
+@media(max-width:1000px){.journey__diploma{width:min(58%,320px)}}
+@media(max-width:760px){.journey__welcome-content{padding-top:0}.journey__welcome-image{height:300px}.journey__quote{min-height:205px}.journey__quote p{font-size:clamp(1.2rem,3vw,1.6rem)}.journey__diploma{width:min(62%,280px)}}
+@media(max-width:480px){.journey__welcome-image{height:270px}.journey__welcome-letter{padding:15px 16px}.journey__quote{min-height:205px}.journey__quote p{font-size:1.24rem}.journey__diploma{width:min(66%,235px)}}
+@media(prefers-reduced-motion:reduce){.journey__welcome-backdrop,.journey__welcome-letter,.journey__welcome-envelope-flap{animation:none}.journey__welcome-envelope-flap{transform:rotateX(-165deg)}}
