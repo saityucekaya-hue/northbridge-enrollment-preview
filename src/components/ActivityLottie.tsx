@@ -1,5 +1,15 @@
 import { DotLottieReact, type DotLottie } from '@lottiefiles/dotlottie-react';
 import { useEffect, useState, type ReactNode } from 'react';
+import learning from '../animations/learning.json';
+import sporting from '../animations/sporting.json';
+import debating from '../animations/debating.json';
+import rowing from '../animations/rowing.json';
+import rugby from '../animations/rugby.json';
+import polo from '../animations/polo.json';
+import soccer from '../animations/soccer.json';
+import camping from '../animations/camping.json';
+
+const activities: Record<string, Record<string, unknown>> = { learning, sporting, debating, rowing, rugby, polo, soccer, camping };
 
 export default function ActivityLottie({ kind, fallback }: { kind: string; fallback: ReactNode }) {
   const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
@@ -18,7 +28,7 @@ export default function ActivityLottie({ kind, fallback }: { kind: string; fallb
   return <div className="college-life__lottie" aria-hidden="true" data-activity={kind}>
     {!firstFrameReady && fallback}
     <DotLottieReact
-      src={`${import.meta.env.BASE_URL}animations/${kind}.json`}
+      data={activities[kind] ?? learning}
       autoplay
       loop
       dotLottieRefCallback={setPlayer}
