@@ -1,5 +1,7 @@
 import { ArrowRight, BookOpen, Check, CircleDot, Dumbbell, MessageSquare, TentTree, Waves } from 'lucide-react';
-import type { CSSProperties } from 'react';
+import { lazy, Suspense, type CSSProperties } from 'react';
+
+const SkateboardLottie = lazy(() => import('./SkateboardLottie'));
 
 export const collegeActivities = [
   { label: 'Learning', detail: 'New ideas to chase', Icon: BookOpen, kind: 'learning' },
@@ -57,7 +59,12 @@ export function CollegeLifeTransition({ scene, onSkip }: { scene: number; onSkip
         <button type="button" onClick={onSkip}>Continue to sign-in setup <ArrowRight size={18} /></button>
       </div>
       <div className="college-life__visual" aria-hidden="true">
-        <div className="college-life__scene" key={activity.kind}><ActivityFigure kind={activity.kind} /><div className="college-life__scene-label"><Icon size={23} /><div><strong>{activity.label}</strong><span>{activity.detail}</span></div></div></div>
+        <div className="college-life__scene" key={activity.kind}>
+          {activity.kind === 'sporting' && import.meta.env.MODE !== 'test'
+            ? <Suspense fallback={<ActivityFigure kind={activity.kind} />}><SkateboardLottie /></Suspense>
+            : <ActivityFigure kind={activity.kind} />}
+          <div className="college-life__scene-label"><Icon size={23} /><div><strong>{activity.label}</strong><span>{activity.detail}</span></div></div>
+        </div>
       </div>
     </div>
   </div>;

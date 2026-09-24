@@ -177,7 +177,10 @@ describe('offer-led sample journey', () => {
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
     const celebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' });
     expect(celebration).toHaveTextContent('Nice one, Jordan!');
-    expect(within(celebration).getByRole('img', { name: /Shareable story preview: My next chapter/i })).toBeInTheDocument();
+    const story = within(celebration).getByRole('img', { name: /Shareable story preview: My next chapter/i });
+    expect(story).toBeInTheDocument();
+    expect(story.querySelector('img')).toHaveAttribute('src', '/campus-northbridge.png');
+    expect(story).toHaveTextContent('The gates are open');
     expect(within(celebration).queryByText('Jordan Lee')).not.toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /Explore campus opportunities & events/i }));
     expect(screen.getByRole('heading', { name: 'Moments to look forward to' })).toBeInTheDocument();

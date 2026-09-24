@@ -37,7 +37,7 @@ The sample sign-in credentials are `jordan.lee@example.com` / `Welcome2027!`. Th
 
 - The eight supplied [desktop and mobile reference images](../onboarding-design-reference.md) define the visual direction. Layout, text, buttons, menus, file inputs, validation, and progress are native responsive UI rather than image backgrounds.
 - Campus and interest photography was generated as standalone project assets. The Audentra company logo is copied byte-for-byte from the [v2 brand guide](../Audentra-portals-rewrite/docs/v2/brand-identity-guide.md).
-- The diploma is native text and CSS, marked as an illustrative future vision rather than an issued credential. The welcome letter rises from its envelope; sample acceptance opens a confetti and college life sequence. Motion is disabled or shortened by the operating system's reduced-motion setting.
+- The diploma is native text and CSS, marked as an illustrative future vision rather than an issued credential. The welcome letter rises from its envelope; sample acceptance opens a confetti and college life sequence. The Sporting scene uses the [Lottie supplied for this preview](https://lottie.host/448edc2e-7a1a-44a6-9d7a-575ce47ec650/wfAqEwzSe0.lottie), stored locally with its unrelated “Tap to flip” label removed. Other activities use the project's illustrated character. Motion is disabled or shortened by the operating system's reduced-motion setting.
 - [Contract and UX notes](docs/contract-and-ux.md) distinguish this demo from the current backend's offer and onboarding endpoints and list the contract work needed to connect the flow.
 - This project is intentionally separate from the active portal and backend repositories.
 

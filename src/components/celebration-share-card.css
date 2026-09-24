@@ -7,3 +7,27 @@
 @keyframes celebration-card-in{from{opacity:0;transform:translateY(14px) rotate(-2deg) scale(.96)}to{opacity:1;transform:translateY(0) rotate(0) scale(1)}}@keyframes celebration-twinkle{50%{opacity:.55;transform:scale(.78)}}
 @media(max-width:470px){.celebration-share{padding:17px;border-radius:17px}.celebration-share__stage{min-height:315px;padding:12px}.celebration-share__card--story{width:min(100%,205px)}.celebration-share__card--post{width:min(100%,285px)}.celebration-share__actions{grid-template-columns:1fr}.celebration-share__actions button{min-height:44px}}
 @media(prefers-reduced-motion:reduce){.celebration-share__card,.celebration-share__star{animation:none!important}}
+
+/* A cinematic campus arrival fills the story and its saved still. */
+.celebration-share{background:#f6faf7;border-color:#d9e6df}
+.celebration-share__eyebrow,.celebration-share__caption button{color:#17645d}
+.celebration-share__formats{background:#e4f0ea}
+.celebration-share__formats button.is-selected{color:#16574f}
+.celebration-share__stage{background:radial-gradient(circle at 20% 10%,#d8e7d6,transparent 45%),radial-gradient(circle at 82% 80%,#d9e6ea,transparent 50%),#e9eee9}
+.celebration-share__card{background:linear-gradient(155deg,#366b67,#173d44 58%,#092936)}
+.celebration-share__card>img{object-position:28% center;transform-origin:35% 60%;animation:celebration-arrival-pan 11s ease-in-out infinite alternate}
+.celebration-share__shade{background:linear-gradient(180deg,#0a303d9c 0%,#0c30351a 25%,#0b30351b 50%,#0826329c 72%,#061e2a 100%)}
+.celebration-share__light{position:absolute;z-index:1;inset:0;background:linear-gradient(110deg,transparent 40%,#fff9cc1f 51%,transparent 62%);transform:translateX(-100%);animation:celebration-light-sweep 7s ease-in-out 1s infinite;pointer-events:none}
+.celebration-share__brand{display:flex;align-items:center;gap:6px;text-shadow:0 2px 8px #08252cbf}
+.celebration-share__brand svg{flex:none;color:#e7d8ad}
+.celebration-share__arrival{position:absolute;z-index:2;top:48%;left:8%;display:inline-flex;align-items:center;gap:5px;padding:8px 10px;border:1px solid #ffffffe0;border-radius:50px;background:#fffdf2e8;color:#14514d;box-shadow:0 7px 18px #0b32394f;font-size:.49rem;font-weight:850;letter-spacing:.055em;text-transform:uppercase;animation:celebration-arrival-tag 3s ease-in-out infinite}
+.celebration-share__arrival svg{flex:none;color:#1d7168}
+.celebration-share__card--post .celebration-share__arrival{top:39%;font-size:.62rem}
+.celebration-share__share{border-color:#235b56;background:#235b56}
+.celebration-share__share:hover:not(:disabled){background:#194b48}
+.celebration-share__download{border-color:#9cbfb1;color:#235b56}
+.celebration-share__download:hover:not(:disabled){background:#eaf5ef}
+@keyframes celebration-arrival-pan{from{transform:scale(1.02) translateY(3px)}to{transform:scale(1.15) translateY(-5px)}}
+@keyframes celebration-light-sweep{0%,40%{transform:translateX(-100%)}75%,100%{transform:translateX(100%)}}
+@keyframes celebration-arrival-tag{50%{transform:translateY(-5px);box-shadow:0 12px 26px #0b323966}}
+@media(prefers-reduced-motion:reduce){.celebration-share__card>img,.celebration-share__light,.celebration-share__arrival{animation:none!important}}

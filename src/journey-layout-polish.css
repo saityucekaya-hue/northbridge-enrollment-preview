@@ -122,12 +122,14 @@
 .journey__quote footer{font-size:.7rem}
 
 /* Increase the diploma without shifting its anchor on the graduate image. */
-.journey__diploma{width:min(58%,350px)}
+.journey__diploma{width:min(72%,430px);transform-origin:top left}
+@media(min-width:761px){.journey__offer-visual>img{object-position:left center}}
+.journey__diploma-inner{transform-origin:top left}
 .journey__diploma-heading>div>span{font-size:clamp(.85rem,1.1vw,1rem)}
 .journey__diploma-award{font-size:.65rem!important}
 .journey__diploma-degree{font-size:.76rem!important}
 .journey__diploma-foot{font-size:.4rem}
-@media(max-width:1000px){.journey__diploma{width:min(58%,320px)}}
-@media(max-width:760px){.journey__welcome-content{padding-top:0}.journey__welcome-image{height:300px}.journey__quote{min-height:205px}.journey__quote p{font-size:clamp(1.2rem,3vw,1.6rem)}.journey__diploma{width:min(62%,280px)}}
-@media(max-width:480px){.journey__welcome-image{height:270px}.journey__welcome-letter{padding:15px 16px}.journey__quote{min-height:205px}.journey__quote p{font-size:1.24rem}.journey__diploma{width:min(66%,235px)}}
+@media(max-width:1000px){.journey__diploma{width:min(68%,370px)}}
+@media(max-width:760px){.journey__welcome-content{padding-top:0}.journey__welcome-image{height:300px}.journey__quote{min-height:205px}.journey__quote p{font-size:clamp(1.2rem,3vw,1.6rem)}.journey__diploma{width:min(70%,300px)}}
+@media(max-width:480px){.journey__welcome-image{height:270px}.journey__welcome-letter{padding:15px 16px}.journey__quote{min-height:205px}.journey__quote p{font-size:1.24rem}.journey__diploma{width:min(72%,255px)}}
 @media(prefers-reduced-motion:reduce){.journey__welcome-backdrop,.journey__welcome-letter,.journey__welcome-envelope-flap{animation:none}.journey__welcome-envelope-flap{transform:rotateX(-165deg)}}

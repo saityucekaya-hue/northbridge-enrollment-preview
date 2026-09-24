@@ -1,5 +1,5 @@
 import { useId, useState } from 'react';
-import { Check, Copy, Download, Image as ImageIcon, Share2, Smartphone, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Check, Copy, Download, GraduationCap, Image as ImageIcon, Share2, Smartphone, Sparkles } from 'lucide-react';
 import './celebration-share-card.css';
 
 type Format = 'story' | 'post';
@@ -8,7 +8,7 @@ type CelebrationShareCardProps = {
   institutionName?: string;
 };
 
-const PHOTO_PATH = '/graduate-offer.png';
+const PHOTO_PATH = `${import.meta.env.BASE_URL}campus-northbridge.png`;
 const FORMATS: Record<Format, { width: number; height: number; label: string }> = {
   story: { width: 1080, height: 1920, label: 'Story' },
   post: { width: 1080, height: 1080, label: 'Post' },
@@ -27,7 +27,7 @@ function drawCover(context: CanvasRenderingContext2D, photo: HTMLImageElement, w
   const scale = Math.max(width / photo.naturalWidth, height / photo.naturalHeight);
   const drawnWidth = photo.naturalWidth * scale;
   const drawnHeight = photo.naturalHeight * scale;
-  context.drawImage(photo, (width - drawnWidth) / 2, (height - drawnHeight) / 2, drawnWidth, drawnHeight);
+  context.drawImage(photo, (width - drawnWidth) * .28, (height - drawnHeight) / 2, drawnWidth, drawnHeight);
 }
 
 function drawStar(context: CanvasRenderingContext2D, x: number, y: number, radius: number) {
@@ -56,10 +56,10 @@ async function makeSharePng(format: Format, institutionName: string): Promise<Bl
   if (photo) drawCover(context, photo, width, height);
 
   const shade = context.createLinearGradient(0, 0, 0, height);
-  shade.addColorStop(0, 'rgba(14, 24, 45, .67)');
-  shade.addColorStop(.35, 'rgba(14, 24, 45, .03)');
-  shade.addColorStop(.62, 'rgba(14, 24, 45, .22)');
-  shade.addColorStop(1, 'rgba(14, 24, 45, .95)');
+  shade.addColorStop(0, 'rgba(8, 37, 43, .62)');
+  shade.addColorStop(.35, 'rgba(8, 37, 43, .03)');
+  shade.addColorStop(.62, 'rgba(8, 37, 43, .22)');
+  shade.addColorStop(1, 'rgba(6, 28, 38, .96)');
   context.fillStyle = shade;
   context.fillRect(0, 0, width, height);
 
@@ -74,6 +74,14 @@ async function makeSharePng(format: Format, institutionName: string): Promise<Bl
   context.fillStyle = '#fff';
   context.font = '700 39px Montserrat, Arial, sans-serif';
   context.fillText(institutionName, margin, format === 'story' ? 112 : 76, width - 2 * margin);
+  const arrivalY = format === 'story' ? 1030 : 430;
+  context.fillStyle = 'rgba(255,253,242,.94)';
+  context.beginPath();
+  context.roundRect(margin, arrivalY, 420, 76, 38);
+  context.fill();
+  context.fillStyle = '#174e50';
+  context.font = '800 22px Montserrat, Arial, sans-serif';
+  context.fillText('THE GATES ARE OPEN', margin + 27, arrivalY + 26, 365);
   context.fillStyle = '#e2edb7';
   context.font = '700 29px Montserrat, Arial, sans-serif';
   context.fillText('MOMENT UNLOCKED  ✦', margin, height - (format === 'story' ? 470 : 445));
@@ -164,9 +172,11 @@ export function CelebrationShareCard({ institutionName = 'Northbridge University
       <div className={`celebration-share__card celebration-share__card--${format}`} role="img" aria-label={`Shareable ${format} preview: My next chapter starts here at ${institutionName}`}>
         {photoAvailable && <img src={PHOTO_PATH} alt="" onError={() => setPhotoAvailable(false)} />}
         <span className="celebration-share__shade" aria-hidden="true" />
+        <span className="celebration-share__light" aria-hidden="true" />
         <span className="celebration-share__star celebration-share__star--large" aria-hidden="true">✦</span>
         <span className="celebration-share__star celebration-share__star--small" aria-hidden="true">✦</span>
-        <span className="celebration-share__brand">{institutionName}</span>
+        <span className="celebration-share__brand"><GraduationCap size={18} aria-hidden="true" /> {institutionName}</span>
+        <span className="celebration-share__arrival"><ArrowUpRight size={15} aria-hidden="true" /> The gates are open</span>
         <span className="celebration-share__card-copy"><small>MOMENT UNLOCKED <span aria-hidden="true">✦</span></small><strong>My next chapter<br /><em>starts here.</em></strong></span>
         <span className="celebration-share__card-footer">THE JOURNEY IS JUST BEGINNING</span>
       </div>

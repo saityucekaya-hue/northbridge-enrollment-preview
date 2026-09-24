@@ -18,6 +18,7 @@ const offerFacts = [
   ['Condition', 'Final transcript required'],
   ['Respond by', '15 June 2027'],
 ];
+const COLLEGE_SCENE_MS = 2200;
 const staticAsset = (name: string) => `${import.meta.env.BASE_URL}${name}`;
 
 function keepDialogFocus(event: KeyboardEvent<HTMLElement>, close: () => void) {
@@ -103,9 +104,9 @@ export function MotionConcept() {
     setAcceptScene(0);
     setAccepting(true);
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    const delay = import.meta.env.MODE === 'test' ? 300 : reducedMotion ? 900 : 5100;
+    const delay = import.meta.env.MODE === 'test' ? 300 : reducedMotion ? 900 : collegeActivities.length * COLLEGE_SCENE_MS + 300;
     if (!reducedMotion && import.meta.env.MODE !== 'test') {
-      sceneTimer.current = window.setInterval(() => setAcceptScene((current) => Math.min(current + 1, collegeActivities.length - 1)), 600);
+      sceneTimer.current = window.setInterval(() => setAcceptScene((current) => Math.min(current + 1, collegeActivities.length - 1)), COLLEGE_SCENE_MS);
     }
     acceptTimer.current = window.setTimeout(finishAcceptance, delay);
   }
