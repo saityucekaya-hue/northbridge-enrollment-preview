@@ -51,7 +51,7 @@ export function CelebrationShareCard({ institutionName = 'Northbridge University
       <p>Pick a design, save the video, and share it where you like.</p>
     </div>
 
-    <div className="celebration-share__workspace">
+    <div className={`celebration-share__workspace celebration-share__workspace--${format}`}>
       <div className="celebration-share__social" role="group" aria-label="Open a social app to share">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram to share the downloaded video" title="Instagram"><FaInstagram aria-hidden="true" /></a>
         <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn to share the downloaded video" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
