@@ -1,33 +1,57 @@
-.celebration-share{min-width:0;width:100%;padding:25px;background:#f6f4ff;color:#16233a;border:1px solid #e3dff4;border-radius:22px;box-shadow:0 20px 56px #2e24521f}
-.celebration-share__heading{text-align:center}.celebration-share__eyebrow{display:inline-flex;align-items:center;gap:6px;color:#6042c4;font-size:.64rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.celebration-share__heading h3{font-size:clamp(1.22rem,2vw,1.6rem);line-height:1.17;letter-spacing:-.05em;margin:8px 0 5px}.celebration-share__heading p{font-size:.75rem;line-height:1.45;color:#5d6680;margin:0}
-.celebration-share__formats{display:flex;gap:5px;max-width:280px;margin:18px auto 15px;padding:4px;border-radius:100px;background:#e8e4f5}.celebration-share__formats button{flex:1;min-height:37px;border:0;border-radius:100px;background:transparent;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:5px 10px;color:#5c6078;font-size:.71rem;font-weight:750;white-space:nowrap}.celebration-share__formats button.is-selected{background:#fff;color:#41269f;box-shadow:0 3px 10px #20143a18}.celebration-share__formats small{font-size:.6rem;font-weight:650;opacity:.8}
-.celebration-share__stage{min-height:345px;padding:17px;display:grid;place-items:center;overflow:hidden;border-radius:16px;background:radial-gradient(circle at 25% 10%,#ded6ff 0,transparent 43%),radial-gradient(circle at 80% 70%,#d7f1e8 0,transparent 47%),#eae8f1}.celebration-share__card{position:relative;isolation:isolate;overflow:hidden;width:100%;max-height:425px;background:linear-gradient(150deg,#526987,#273349 55%,#122139);color:#fff;box-shadow:0 16px 36px #12213955;animation:celebration-card-in .55s cubic-bezier(.2,.8,.2,1) both}.celebration-share__card--story{width:min(100%,235px);aspect-ratio:9/16;border-radius:16px}.celebration-share__card--post{width:min(100%,310px);aspect-ratio:1;border-radius:15px}.celebration-share__card>img,.celebration-share__shade{position:absolute;inset:0;width:100%;height:100%}.celebration-share__card>img{object-fit:cover;object-position:center}.celebration-share__shade{background:linear-gradient(180deg,#0e182db3 0%,#0e182d08 35%,#0e182d38 62%,#0e182df2 100%)}.celebration-share__star{position:absolute;z-index:1;color:#e2edb7;line-height:1;text-shadow:0 0 25px #e2edb766}.celebration-share__star--large{top:18%;right:10%;font-size:3.3rem;animation:celebration-twinkle 4s ease-in-out infinite}.celebration-share__star--small{top:27%;right:23%;font-size:1.15rem;animation:celebration-twinkle 4s 1s ease-in-out infinite}.celebration-share__brand{position:absolute;z-index:1;top:6%;left:8%;right:8%;font-size:.68rem;line-height:1.2;font-weight:800;letter-spacing:-.02em;text-shadow:0 2px 8px #15213e80}.celebration-share__card-copy{position:absolute;z-index:1;left:8%;right:7%;bottom:12%}.celebration-share__card-copy small{display:block;color:#e2edb7;font-size:.5rem;font-weight:800;letter-spacing:.16em;margin-bottom:10px}.celebration-share__card-copy strong{display:block;font-size:clamp(1.24rem,3vw,1.6rem);line-height:1.05;letter-spacing:-.065em;text-shadow:0 2px 12px #101d42a8}.celebration-share__card-copy em{font-family:Georgia,serif;font-size:1.22em;font-weight:500;letter-spacing:-.045em}.celebration-share__card-footer{position:absolute;z-index:1;left:8%;right:8%;bottom:5%;font-size:.41rem;font-weight:800;letter-spacing:.15em;color:#ffffffe8}.celebration-share__card--post .celebration-share__star--large{top:14%}.celebration-share__card--post .celebration-share__star--small{top:25%}.celebration-share__card--post .celebration-share__card-copy{bottom:13%}.celebration-share__card--post .celebration-share__card-copy strong{font-size:1.8rem}.celebration-share__card--post .celebration-share__brand{font-size:.82rem}.celebration-share__card--post .celebration-share__card-footer{font-size:.5rem}
-.celebration-share__actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}.celebration-share__actions button{min-height:43px;border-radius:9px;display:flex;align-items:center;justify-content:center;gap:7px;padding:8px 9px;font-size:.69rem;font-weight:750;white-space:nowrap}.celebration-share__share{border:1px solid #6042c4;background:#6042c4;color:#fff}.celebration-share__share:hover:not(:disabled){background:#4f34ad}.celebration-share__download{border:1px solid #c9bdea;background:#fff;color:#4c329e}.celebration-share__download:hover:not(:disabled){background:#f0ebff}.celebration-share__actions button:disabled{opacity:.65;cursor:progress}
-.celebration-share__caption{display:flex;align-items:start;gap:9px;margin-top:13px;padding:10px 11px;background:#fff;border:1px solid #e2dff0;border-radius:9px}.celebration-share__caption p{flex:1;margin:0;font-size:.63rem;line-height:1.48;color:#3d4963;user-select:text}.celebration-share__caption button{display:inline-flex;align-items:center;gap:3px;flex:none;border:0;background:transparent;color:#6042c4;padding:2px;font-size:.65rem;font-weight:750}.celebration-share__caption button:hover{text-decoration:underline}.celebration-share__privacy{display:flex;align-items:start;gap:5px;margin:11px 1px 0;color:#5a6c70;font-size:.58rem;line-height:1.4}.celebration-share__privacy svg{flex:none;margin-top:1px;color:#087f75}.celebration-share__feedback{min-height:1em;margin:8px 0 0;color:#315e62;font-size:.65rem;line-height:1.4;text-align:center}
-@keyframes celebration-card-in{from{opacity:0;transform:translateY(14px) rotate(-2deg) scale(.96)}to{opacity:1;transform:translateY(0) rotate(0) scale(1)}}@keyframes celebration-twinkle{50%{opacity:.55;transform:scale(.78)}}
-@media(max-width:470px){.celebration-share{padding:17px;border-radius:17px}.celebration-share__stage{min-height:315px;padding:12px}.celebration-share__card--story{width:min(100%,205px)}.celebration-share__card--post{width:min(100%,285px)}.celebration-share__actions{grid-template-columns:1fr}.celebration-share__actions button{min-height:44px}}
-@media(prefers-reduced-motion:reduce){.celebration-share__card,.celebration-share__star{animation:none!important}}
-
-/* A cinematic campus arrival fills the story and its saved still. */
-.celebration-share{background:#f6faf7;border-color:#d9e6df}
-.celebration-share__eyebrow,.celebration-share__caption button{color:#17645d}
-.celebration-share__formats{background:#e4f0ea}
-.celebration-share__formats button.is-selected{color:#16574f}
-.celebration-share__stage{background:radial-gradient(circle at 20% 10%,#d8e7d6,transparent 45%),radial-gradient(circle at 82% 80%,#d9e6ea,transparent 50%),#e9eee9}
-.celebration-share__card{background:linear-gradient(155deg,#366b67,#173d44 58%,#092936)}
-.celebration-share__card>img{object-position:28% center;transform-origin:35% 60%;animation:celebration-arrival-pan 11s ease-in-out infinite alternate}
+.celebration-share{min-width:0;width:100%;padding:22px;background:#f6faf7;color:#182c3d;border:1px solid #d9e6df;border-radius:22px;box-shadow:0 20px 56px #173c4620}
+.celebration-share__heading{text-align:center}
+.celebration-share__eyebrow{display:inline-flex;align-items:center;gap:6px;color:#17645d;font-size:.64rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.celebration-share__heading h3{font-size:clamp(1.22rem,2vw,1.6rem);line-height:1.17;letter-spacing:-.05em;margin:8px 0 5px}
+.celebration-share__heading p{font-size:.75rem;line-height:1.45;color:#5d6874;margin:0}
+.celebration-share__formats{display:flex;gap:5px;max-width:310px;margin:16px auto 14px;padding:4px;border-radius:100px;background:#e4f0ea}
+.celebration-share__formats button{flex:1;min-height:37px;border:0;border-radius:100px;background:transparent;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:5px 10px;color:#5c6078;font-size:.71rem;font-weight:750;white-space:nowrap}
+.celebration-share__formats button.is-selected{background:#fff;color:#16574f;box-shadow:0 3px 10px #20143a18}
+.celebration-share__formats small{font-size:.6rem;font-weight:650;opacity:.8}
+.celebration-share__stage{height:370px;min-height:0;padding:12px;display:grid;place-items:center;overflow:hidden;border-radius:16px;background:radial-gradient(circle at 20% 10%,#d8e7d6,transparent 45%),radial-gradient(circle at 82% 80%,#d9e6ea,transparent 50%),#e9eee9}
+.celebration-share__card{position:relative;isolation:isolate;overflow:hidden;max-height:100%;color:#fff;box-shadow:0 16px 36px #12213955;animation:celebration-card-in .55s cubic-bezier(.2,.8,.2,1) both}
+.celebration-share__card--story{width:min(100%,200px);aspect-ratio:9/16;border-radius:16px;background:#113c42}
+.celebration-share__card--story>img,.celebration-share__shade{position:absolute;inset:0;width:100%;height:100%}
+.celebration-share__card--story>img{object-fit:cover;object-position:28% center;transform-origin:35% 60%;animation:celebration-arrival-pan 11s ease-in-out infinite alternate}
 .celebration-share__shade{background:linear-gradient(180deg,#0a303d9c 0%,#0c30351a 25%,#0b30351b 50%,#0826329c 72%,#061e2a 100%)}
 .celebration-share__light{position:absolute;z-index:1;inset:0;background:linear-gradient(110deg,transparent 40%,#fff9cc1f 51%,transparent 62%);transform:translateX(-100%);animation:celebration-light-sweep 7s ease-in-out 1s infinite;pointer-events:none}
-.celebration-share__brand{display:flex;align-items:center;gap:6px;text-shadow:0 2px 8px #08252cbf}
+.celebration-share__star{position:absolute;z-index:1;color:#e2edb7;line-height:1;text-shadow:0 0 25px #e2edb766}
+.celebration-share__star--large{top:18%;right:10%;font-size:3.3rem;animation:celebration-twinkle 4s ease-in-out infinite}
+.celebration-share__star--small{top:27%;right:23%;font-size:1.15rem;animation:celebration-twinkle 4s 1s ease-in-out infinite}
+.celebration-share__brand{position:absolute;z-index:1;top:6%;left:8%;right:8%;display:flex;align-items:center;gap:6px;font-size:.68rem;line-height:1.2;font-weight:800;letter-spacing:-.02em;text-shadow:0 2px 8px #08252cbf}
 .celebration-share__brand svg{flex:none;color:#e7d8ad}
 .celebration-share__arrival{position:absolute;z-index:2;top:48%;left:8%;display:inline-flex;align-items:center;gap:5px;padding:8px 10px;border:1px solid #ffffffe0;border-radius:50px;background:#fffdf2e8;color:#14514d;box-shadow:0 7px 18px #0b32394f;font-size:.49rem;font-weight:850;letter-spacing:.055em;text-transform:uppercase;animation:celebration-arrival-tag 3s ease-in-out infinite}
 .celebration-share__arrival svg{flex:none;color:#1d7168}
-.celebration-share__card--post .celebration-share__arrival{top:39%;font-size:.62rem}
-.celebration-share__share{border-color:#235b56;background:#235b56}
-.celebration-share__share:hover:not(:disabled){background:#194b48}
-.celebration-share__download{border-color:#9cbfb1;color:#235b56}
+.celebration-share__card-copy{position:absolute;z-index:1;left:8%;right:7%;bottom:12%}
+.celebration-share__card-copy small{display:block;color:#e2edb7;font-size:.5rem;font-weight:800;letter-spacing:.16em;margin-bottom:10px}
+.celebration-share__card-copy strong{display:block;font-size:clamp(1.24rem,3vw,1.6rem);line-height:1.05;letter-spacing:-.065em;text-shadow:0 2px 12px #101d42a8}
+.celebration-share__card-copy em{font-family:Georgia,serif;font-size:1.22em;font-weight:500;letter-spacing:-.045em}
+.celebration-share__card-footer{position:absolute;z-index:1;left:8%;right:8%;bottom:5%;font-size:.41rem;font-weight:800;letter-spacing:.15em;color:#ffffffe8}
+.celebration-share__card--announcement{width:min(100%,340px);aspect-ratio:1;border-radius:16px;background:#f5f1e7;color:#172e3d}
+.celebration-share__announcement-photo{position:relative;height:46%;overflow:hidden;background:#214c50}
+.celebration-share__announcement-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#082e3b4d,#082e3bb5)}
+.celebration-share__announcement-photo img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:celebration-arrival-pan 11s ease-in-out infinite alternate}
+.celebration-share__announcement-brand{position:absolute;z-index:1;top:10%;left:6%;color:white;font-size:.75rem;font-weight:800;text-shadow:0 2px 8px #173c46}
+.celebration-share__announcement-spark{position:absolute;z-index:1;top:19%;right:9%;color:#e5eeba;font-size:3rem;line-height:1;animation:celebration-twinkle 4s ease-in-out infinite}
+.celebration-share__announcement-seal{position:absolute;z-index:2;top:calc(46% - 24px);left:7%;width:49px;height:49px;border:3px solid #d7c49c;border-radius:50%;display:grid;place-items:center;background:#1e5353;color:#fff6dd;font:700 1.9rem Georgia,serif;box-shadow:0 3px 10px #173c4633}
+.celebration-share__announcement-copy{position:absolute;top:58%;left:7%;right:6%;display:flex;flex-direction:column;gap:7px}
+.celebration-share__announcement-copy small{color:#23615c;font-size:.52rem;font-weight:850;letter-spacing:.12em}
+.celebration-share__announcement-copy strong{font-size:1.3rem;line-height:1.08;letter-spacing:-.055em}
+.celebration-share__announcement-copy em{font-family:Georgia,serif;font-size:1.13em;font-weight:500;letter-spacing:-.035em}
+.celebration-share__announcement-copy>span{color:#526573;font-size:.6rem}
+.celebration-share__announcement-footer{position:absolute;bottom:4%;left:7%;right:7%;padding-top:8px;border-top:1px solid #c7b58b;color:#23615c;font-size:.45rem;font-weight:850;letter-spacing:.12em}
+.celebration-share__actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
+.celebration-share__social{display:flex;align-items:center;gap:7px}
+.celebration-share__social a{width:40px;height:40px;display:grid;place-items:center;border:1px solid #bad5c8;border-radius:50%;background:#fff;color:#245c58;box-shadow:0 4px 10px #0b343212;font-size:1rem;transition:transform .2s,background .2s,color .2s}
+.celebration-share__social a:hover{transform:translateY(-3px);background:#245c58;color:#fff}
+.celebration-share__social a:focus-visible,.celebration-share__download:focus-visible{outline:3px solid #2f74ed;outline-offset:2px}
+.celebration-share__download{min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 14px;border:1px solid #9cbfb1;border-radius:10px;background:#fff;color:#235b56;font-size:.7rem;font-weight:800;white-space:nowrap}
 .celebration-share__download:hover:not(:disabled){background:#eaf5ef}
+.celebration-share__download:disabled{opacity:.6;cursor:not-allowed}
+.celebration-share__error{margin:9px 0 0;color:#a43d36;font-size:.7rem;line-height:1.35;text-align:center}
+@keyframes celebration-card-in{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes celebration-twinkle{50%{opacity:.6;transform:scale(.82) rotate(15deg)}}
 @keyframes celebration-arrival-pan{from{transform:scale(1.02) translateY(3px)}to{transform:scale(1.15) translateY(-5px)}}
 @keyframes celebration-light-sweep{0%,40%{transform:translateX(-100%)}75%,100%{transform:translateX(100%)}}
 @keyframes celebration-arrival-tag{50%{transform:translateY(-5px);box-shadow:0 12px 26px #0b323966}}
-@media(prefers-reduced-motion:reduce){.celebration-share__card>img,.celebration-share__light,.celebration-share__arrival{animation:none!important}}
+@media(max-width:470px){.celebration-share{padding:16px;border-radius:17px}.celebration-share__stage{height:315px;padding:10px}.celebration-share__card--story{width:min(100%,166px)}.celebration-share__card--announcement{width:min(100%,295px)}.celebration-share__actions{flex-wrap:wrap;justify-content:center}.celebration-share__social a{width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){.celebration-share__card,.celebration-share__card--story>img,.celebration-share__announcement-photo img,.celebration-share__announcement-spark,.celebration-share__star,.celebration-share__light,.celebration-share__arrival{animation:none!important}}

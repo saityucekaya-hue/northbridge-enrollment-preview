@@ -64,6 +64,19 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
 
   useEffect(() => { if (cropOpen) drawCrop(); }, [cropOpen, zoom, positionX, positionY]);
 
+  useEffect(() => {
+    if (!cropOpen) return;
+    const canvas = cropCanvasRef.current;
+    if (!canvas) return;
+    const handleWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      const direction = event.deltaY < 0 ? 1 : -1;
+      setZoom((current) => clamp(Number((current + direction * .1).toFixed(2)), 1, 3));
+    };
+    canvas.addEventListener('wheel', handleWheel, { passive: false });
+    return () => canvas.removeEventListener('wheel', handleWheel);
+  }, [cropOpen]);
+
   function drawCrop() {
     const canvas = cropCanvasRef.current;
     const image = imageRef.current;
@@ -236,7 +249,7 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
     {cropOpen && <div className="id-studio__overlay" onMouseDown={(event) => { if (event.target === event.currentTarget) closeCrop(); }}><section className="id-studio__crop-dialog" role="dialog" aria-modal="true" aria-label="Edit profile photo" onKeyDown={(event) => keepFocusInDialog(event, closeCrop)}>
       <header className="id-studio__crop-header"><div><span>PROFILE PHOTO</span><h2>Edit photo</h2></div><button className="id-studio__close" type="button" onClick={closeCrop} aria-label="Close photo editor"><X size={21} /></button></header>
       <div className="id-studio__crop-stage">
-        <canvas ref={cropCanvasRef} width="600" height="600" tabIndex={0} className="id-studio__crop-canvas" aria-label="Profile photo crop preview. Drag to move, or use arrow keys." onKeyDown={(event) => { if (event.key === 'ArrowLeft') { event.preventDefault(); setPositionX(clamp(positionX - 5, 0, 100)); } if (event.key === 'ArrowRight') { event.preventDefault(); setPositionX(clamp(positionX + 5, 0, 100)); } if (event.key === 'ArrowUp') { event.preventDefault(); setPositionY(clamp(positionY - 5, 0, 100)); } if (event.key === 'ArrowDown') { event.preventDefault(); setPositionY(clamp(positionY + 5, 0, 100)); } }} onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); dragRef.current = { x: event.clientX, y: event.clientY, positionX, positionY }; }} onPointerMove={(event) => { const drag = dragRef.current; if (!drag) return; const bounds = event.currentTarget.getBoundingClientRect(); setPositionX(clamp(drag.positionX - (event.clientX - drag.x) / bounds.width * 100, 0, 100)); setPositionY(clamp(drag.positionY - (event.clientY - drag.y) / bounds.height * 100, 0, 100)); }} onPointerUp={() => { dragRef.current = null; }} />
+        <canvas ref={cropCanvasRef} width="600" height="600" tabIndex={0} className="id-studio__crop-canvas" aria-label="Profile photo crop preview. Drag to move, scroll to zoom, or use arrow keys." onKeyDown={(event) => { if (event.key === 'ArrowLeft') { event.preventDefault(); setPositionX(clamp(positionX - 5, 0, 100)); } if (event.key === 'ArrowRight') { event.preventDefault(); setPositionX(clamp(positionX + 5, 0, 100)); } if (event.key === 'ArrowUp') { event.preventDefault(); setPositionY(clamp(positionY - 5, 0, 100)); } if (event.key === 'ArrowDown') { event.preventDefault(); setPositionY(clamp(positionY + 5, 0, 100)); } }} onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); dragRef.current = { x: event.clientX, y: event.clientY, positionX, positionY }; }} onPointerMove={(event) => { const drag = dragRef.current; if (!drag) return; const bounds = event.currentTarget.getBoundingClientRect(); setPositionX(clamp(drag.positionX - (event.clientX - drag.x) / bounds.width * 100, 0, 100)); setPositionY(clamp(drag.positionY - (event.clientY - drag.y) / bounds.height * 100, 0, 100)); }} onPointerUp={() => { dragRef.current = null; }} />
         <span className="id-studio__crop-ring" aria-hidden="true" />
       </div>
       <p className="id-studio__crop-hint">Drag to center your face inside the circle.</p>

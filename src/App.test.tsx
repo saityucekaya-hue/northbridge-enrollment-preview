@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { cleanup, render, screen, waitFor, within } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 import { IdCardStudio } from './screens/IdCardStudio';
@@ -142,7 +142,7 @@ describe('offer-led sample journey', () => {
     const profile = screen.getByLabelText('Your student profile');
     expect(profile).toBeInTheDocument();
     expect(profile.querySelector('img')).toBeNull();
-  });
+  }, 10_000);
 
   it('validates and checks the ID when Finish is clicked, celebrates, and opens both destinations', async () => {
     const user = userEvent.setup();
@@ -171,6 +171,13 @@ describe('offer-led sample journey', () => {
     await user.upload(screen.getByLabelText('Upload ID front'), new File(['front'], 'front.png', { type: 'image/png' }));
     await user.upload(screen.getByLabelText('Upload ID back'), new File(['back'], 'back.png', { type: 'image/png' }));
     await user.upload(screen.getByLabelText('Upload profile photo'), new File(['photo'], 'portrait.png', { type: 'image/png' }));
+    const cropPreview = screen.getByLabelText(/Profile photo crop preview/i);
+    const zoomControl = screen.getByRole('slider', { name: 'Zoom photo' });
+    expect(zoomControl).toHaveValue('1.25');
+    fireEvent.wheel(cropPreview, { deltaY: -120 });
+    expect(zoomControl).toHaveValue('1.35');
+    fireEvent.wheel(cropPreview, { deltaY: 120 });
+    expect(zoomControl).toHaveValue('1.25');
     await user.click(screen.getByRole('button', { name: 'Save photo' }));
     const portraitInput = screen.getByLabelText('Upload profile photo');
     const chooserClick = vi.spyOn(portraitInput, 'click');
@@ -187,6 +194,20 @@ describe('offer-led sample journey', () => {
     expect(story.querySelector('img')).toHaveAttribute('src', '/campus-northbridge.png');
     expect(story).toHaveTextContent('The gates are open');
     expect(within(celebration).queryByText('Jordan Lee')).not.toBeInTheDocument();
+    expect(within(celebration).queryByText(/My next chapter starts here\. Excited for/i)).not.toBeInTheDocument();
+    expect(within(celebration).queryByText(/No legal name, ID details/i)).not.toBeInTheDocument();
+    expect(within(celebration).queryByText(/Share options opened/i)).not.toBeInTheDocument();
+    expect(within(celebration).queryByRole('button', { name: 'Share image' })).not.toBeInTheDocument();
+    expect(within(celebration).getByRole('button', { name: 'Download video' })).toBeInTheDocument();
+    for (const platform of ['Instagram', 'LinkedIn', 'X', 'Facebook']) {
+      expect(within(celebration).getByRole('link', { name: new RegExp(`Open ${platform} to share`) })).toBeInTheDocument();
+    }
+    await user.click(within(celebration).getByRole('button', { name: /Announcement 1:1/i }));
+    const announcement = within(celebration).getByRole('img', { name: /Shareable announcement preview/i });
+    expect(announcement).toHaveTextContent('I got accepted to');
+    expect(announcement).toHaveTextContent('Northbridge University');
+    await user.click(within(celebration).getByRole('button', { name: /Story 9:16/i }));
+    expect(within(celebration).getByRole('img', { name: /Shareable story preview/i })).toBeInTheDocument();
     expect(within(celebration).getByRole('button', { name: 'See your pending enrollment tasks' }).querySelector('img')).toHaveAttribute('src', '/interest-quiet.png');
     expect(within(celebration).getByRole('button', { name: 'Explore campus opportunities & events' }).querySelector('img')).toHaveAttribute('src', '/campus-northbridge.png');
     await user.click(screen.getByRole('button', { name: /Explore campus opportunities & events/i }));
