@@ -25,7 +25,7 @@ To check the project-site build locally, set `PAGES_BASE=/northbridge-enrollment
 ## Try the journey
 
 1. Choose Northbridge or Audentra University with **Sample university**, then click **Explore as Jordan**. The one-time invitation is also previewable from sign-in.
-2. Read the conditional offer, including the response deadline, condition, illustrative tuition and fees, deposit, and aid status. Open the full sample letter. The campus side of the page includes an animated, clearly fictional diploma preview that can be hidden and shown. **Accept sample offer** requires an explicit review acknowledgement covering the academic and financial terms; it changes local preview state only.
+2. Read the conditional offer, including the response deadline, condition, illustrative tuition and fees, deposit, and aid status. Open the full sample letter. The campus side of the page includes an animated, clearly fictional diploma preview and a quotation. **Accept sample offer** requires an explicit review acknowledgement covering the academic and financial terms; it changes local preview state only.
 3. Confirm the sample email, enter a phone number, and create a 12-character password. The password is checked and discarded locally. No account is created.
 4. Choose campus interests or skip. Neither choice affects the offer.
 5. Start enrollment or return later. If started, choose a government ID file and a profile photo independently, using camera or file controls. Selected files remain on the device; they are not uploaded. On reload, file names remain but their contents must be chosen again.
