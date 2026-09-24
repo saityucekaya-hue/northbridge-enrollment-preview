@@ -61,7 +61,7 @@ export function CollegeLifeTransition({ scene, onSkip }: { scene: number; onSkip
       <div className="college-life__visual" aria-hidden="true">
         <div className="college-life__scene" key={activity.kind}>
           {activity.kind === 'sporting' && import.meta.env.MODE !== 'test'
-            ? <Suspense fallback={<ActivityFigure kind={activity.kind} />}><SkateboardLottie /></Suspense>
+            ? <Suspense fallback={<ActivityFigure kind={activity.kind} />}><SkateboardLottie fallback={<ActivityFigure kind={activity.kind} />} /></Suspense>
             : <ActivityFigure kind={activity.kind} />}
           <div className="college-life__scene-label"><Icon size={23} /><div><strong>{activity.label}</strong><span>{activity.detail}</span></div></div>
         </div>
