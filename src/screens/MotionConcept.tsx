@@ -20,7 +20,7 @@ const offerFacts = [
   ['Condition', 'Final transcript required'],
   ['Respond by', '15 June 2027'],
 ];
-const COLLEGE_SCENE_MS = 2200;
+const COLLEGE_SCENE_MS = 4800;
 const staticAsset = (name: string) => `${import.meta.env.BASE_URL}${name}`;
 
 function keepDialogFocus(event: KeyboardEvent<HTMLElement>, close: () => void) {

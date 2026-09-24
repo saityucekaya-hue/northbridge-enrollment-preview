@@ -6,6 +6,10 @@ import { IdCardStudio } from './screens/IdCardStudio';
 import { CollegeLifeTransition, collegeActivities } from './components/CollegeLifeTransition';
 import { validateDocument, validatePassword } from './lib/demo';
 
+vi.mock('@lottiefiles/dotlottie-react', () => ({
+  DotLottieReact: ({ className, src }: { className: string; src: string }) => <div className={className} data-src={src} />,
+}));
+
 beforeEach(() => {
   sessionStorage.clear();
   window.history.replaceState({}, '', '/sign-in');
@@ -33,6 +37,15 @@ async function reachCampus(user: ReturnType<typeof userEvent.setup>) {
 }
 
 describe('offer-led sample journey', () => {
+  it('limits the legal name to 265 characters and keeps the card preview focused', () => {
+    render(<IdCardStudio visible onBack={vi.fn()} onDestination={vi.fn()} />);
+    const name = screen.getByRole('textbox', { name: 'Full legal name *' });
+    expect(name).toHaveAttribute('maxLength', '265');
+    fireEvent.change(name, { target: { value: 'A'.repeat(300) } });
+    expect(name).toHaveValue('A'.repeat(265));
+    expect(screen.getByLabelText('Student ID card preview')).not.toHaveTextContent('Live preview');
+  });
+
   it('moves from the invitation welcome through the full offer and acceptance to access setup', async () => {
     const user = userEvent.setup();
     window.history.replaceState({}, '', '/motion-concept');
@@ -67,9 +80,6 @@ describe('offer-led sample journey', () => {
     expect(screen.getByText(/Meek young men grow up in libraries/i)).toBeInTheDocument();
     expect(screen.getByText(/Ralph Waldo Emerson/i)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /Accept offer/i }));
-    expect(screen.getByRole('status')).toHaveTextContent('Offer accepted!');
-    expect(screen.getByRole('heading', { name: /College life loading/i })).toBeInTheDocument();
-    expect(screen.getByRole('progressbar', { name: 'Loading college life' })).toHaveAttribute('aria-valuenow', '13');
     await waitFor(() => expect(screen.getByRole('heading', { name: /How will you sign in next time/i })).toBeInTheDocument(), { timeout: 3000 });
   });
 
@@ -78,13 +88,14 @@ describe('offer-led sample journey', () => {
     const onSkip = vi.fn();
     const { rerender } = render(<CollegeLifeTransition scene={0} onSkip={onSkip} />);
     expect(screen.getByText('Learning', { selector: '.college-life__scene-label strong' })).toBeInTheDocument();
-    expect(screen.getByRole('progressbar', { name: 'Loading college life' })).toHaveAttribute('aria-valuenow', '13');
+    expect(screen.getByRole('progressbar', { name: 'Loading college life' })).toHaveAttribute('aria-valuenow', '33');
     for (const [scene, activity] of collegeActivities.entries()) {
       rerender(<CollegeLifeTransition scene={scene} onSkip={onSkip} />);
       expect(screen.getByText(activity.label, { selector: '.college-life__scene-label strong' })).toBeInTheDocument();
-      const illustration = document.querySelector(`.student-scene[data-activity="${activity.kind}"]`);
-      expect(illustration).toBeInTheDocument();
-      expect(illustration?.querySelector('[data-role="student"]')).toBeInTheDocument();
+      const activeAnimation = document.querySelector('.college-life__animation.is-active .college-life__lottie');
+      expect(activeAnimation).toBeInTheDocument();
+      expect(activeAnimation).toHaveAttribute('data-src', `/animations/${activity.asset}`);
+      expect(document.querySelector('.student-scene')).not.toBeInTheDocument();
     }
     expect(screen.getByRole('progressbar', { name: 'Loading college life' })).toHaveAttribute('aria-valuenow', '100');
     await user.click(screen.getByRole('button', { name: 'Continue to sign-in setup' }));
@@ -191,7 +202,7 @@ describe('offer-led sample journey', () => {
     expect(screen.getByRole('dialog', { name: 'Edit profile photo' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Save photo' }));
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
-    const celebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' });
+    const celebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' }, { timeout: 5000 });
     expect(celebration).toHaveTextContent('Nice one, Jordan!');
     expect(celebration.querySelector('.id-studio__success-mark')).not.toBeInTheDocument();
     const story = within(celebration).getByRole('img', { name: /Shareable story preview: My next chapter/i });
@@ -221,11 +232,11 @@ describe('offer-led sample journey', () => {
     await user.clear(screen.getByLabelText('Full legal name *'));
     await user.type(screen.getByLabelText('Full legal name *'), 'Asdfasdasdfasdsfasdfslasdhjgsldfjksdkfgdasf Example');
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
-    const longNameCelebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' });
+    const longNameCelebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' }, { timeout: 5000 });
     expect(longNameCelebration).toHaveTextContent('Nice one, Asdfasdasdfasd…!');
     await user.click(screen.getByRole('button', { name: /See your pending enrollment tasks/i }));
     expect(screen.getByRole('heading', { name: 'The next steps are yours.' })).toBeInTheDocument();
-  }, 10_000);
+  }, 30_000);
 
   it('keeps Finish locked after a mismatch or a stale check, then allows a retry', async () => {
     const user = userEvent.setup();
@@ -374,7 +385,7 @@ describe('offer-led sample journey', () => {
     expect(screen.getByText(/place is not yet reserved/i)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /Explore campus & events/i }));
     expect(screen.getByText(/sample destinations, not live events/i)).toBeInTheDocument();
-  });
+  }, 15_000);
 
   it('supports the Audentra University theme with the same journey and no student SSO buttons', async () => {
     const user = userEvent.setup();

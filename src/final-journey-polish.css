@@ -1,0 +1,64 @@
+/* Keep the envelope fixed while showing a little more of its letter. */
+.journey__welcome-letter{bottom:calc(18% + 5px)}
+
+/* Let the cropped portrait occupy the whole circular avatar. */
+.journey .id-studio__avatar{padding:0}
+.journey .id-studio__avatar>img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover}
+
+/* The two sides of the ID studio should use their available desktop height. */
+@media(min-width:761px) and (min-height:821px){
+  .journey .id-studio__form{padding:clamp(29px,4vh,44px) clamp(19px,2vw,30px) 28px}
+  .journey .id-studio__identity-row{margin:26px 0 24px}
+  .journey .id-studio__documents-heading{margin:20px 0 12px}
+  .journey .id-studio__document-tile{min-height:136px;padding:15px}
+  .journey .id-studio__document-tile>svg{width:28px;height:28px;margin-bottom:10px}
+  .journey .id-studio__document-tile strong{font-size:.8rem}
+  .journey .id-studio__document-tile span{font-size:.68rem}
+  .journey .id-studio__complete{margin-top:19px}
+  .journey .id-studio__preview{padding:clamp(32px,4vh,43px) clamp(19px,2vw,30px) 26px}
+  .journey .id-studio__preview-heading{max-width:475px}
+  .journey .id-studio__card,.journey .id-studio__face-label{width:min(100%,475px)}
+  .journey .id-studio__card-stack{gap:9px}
+}
+@media(min-width:761px) and (max-height:820px){
+  .journey .id-studio__form{padding-inline:clamp(19px,2vw,30px)}
+  .journey .id-studio__preview{padding-inline:clamp(19px,2vw,30px)}
+  .journey .id-studio__document-tile{min-height:112px;padding:12px}
+  .journey .id-studio__document-tile>svg{width:25px;height:25px;margin-bottom:7px}
+}
+
+/* Legal names can be long, but the physical card stays readable. */
+.id-studio__card-person strong{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+.id-studio__card-back-body>div:first-child{min-width:0}
+.id-studio__card-back-body strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* The close control floats over the modal instead of creating an empty row. */
+.id-studio__celebration{align-items:stretch}
+.id-studio__celebration .id-studio__close{position:absolute;top:14px;right:14px;margin:0;grid-column:auto}
+.id-studio__celebration-copy{display:flex;flex-direction:column;align-self:stretch;padding:20px 0 4px}
+.id-studio__celebration .id-studio__success-actions{margin-top:auto}
+.id-studio__celebration .celebration-share{align-self:start;margin-top:0}
+@media(max-width:760px){
+  .id-studio__celebration-copy{display:block;padding:0}
+  .id-studio__celebration .id-studio__success-actions{margin-top:0}
+  .id-studio__celebration .id-studio__close{top:10px;right:10px}
+}
+
+/* Show licensed, locally bundled campus animations at a consistent scale. */
+.college-life__lottie{position:relative;display:block;width:min(100%,430px);aspect-ratio:1;filter:drop-shadow(0 16px 25px #102e3838)}
+.college-life__lottie canvas{display:block;width:100%;height:100%}
+.college-life__animation-stage{position:relative;width:min(100%,430px);aspect-ratio:1}
+.college-life__animation{position:absolute;inset:0;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.college-life__animation.is-active{opacity:1}
+.college-life__loading-mark{position:absolute;display:grid;place-items:center;width:105px;height:105px;border:2px solid #d6e6b1;border-radius:50%;color:#244b50;background:#f4f2d9;font:700 4rem Georgia,serif;box-shadow:0 16px 38px #0e36314d}
+.college-life__animation .college-life__lottie{z-index:1}
+.college-life__scene-label{margin-top:-18px}
+.college-life__more{margin:-13px 0 23px!important;color:#bad2cf!important;font-size:.68rem!important;line-height:1.8}
+.college-life__more>span{display:inline-flex;flex-wrap:wrap;gap:4px 11px}
+.college-life__more>span>span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.college-life__more svg{color:#d7dfb9}
+@media(max-width:760px){
+  .college-life__animation-stage{width:min(100%,240px)}
+  .college-life__lottie{width:min(100%,240px)}
+  .college-life__more{margin:-6px 0 8px!important}
+}

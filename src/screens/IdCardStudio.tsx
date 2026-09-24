@@ -141,6 +141,7 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
   function validateDetails() {
     const nextErrors: Record<string, string> = {};
     if (!legalName.trim()) nextErrors.name = 'Enter your legal name.';
+    else if (legalName.length > 265) nextErrors.name = 'Use no more than 265 characters.';
     if (!photoCrop) nextErrors.profile = 'Add and crop a profile photo.';
     if (!front) nextErrors.front = 'Add the front photo.';
     if (!back) nextErrors.back = 'Add the back photo.';
@@ -206,7 +207,7 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
         </div>
         <div className="id-studio__field id-studio__legal-field">
           <label htmlFor="id-legal-name">Full legal name <span>*</span></label>
-          <input id="id-legal-name" ref={nameRef} value={legalName} onChange={(event) => { setLegalName(event.target.value); invalidateMatch(); setErrors((current) => ({ ...current, name: '' })); }} placeholder="As shown on your ID" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'id-name-error' : undefined} />
+          <input id="id-legal-name" ref={nameRef} value={legalName} maxLength={265} onChange={(event) => { setLegalName(event.target.value.slice(0, 265)); invalidateMatch(); setErrors((current) => ({ ...current, name: '' })); }} placeholder="As shown on your ID" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'id-name-error' : undefined} />
           {errors.name && <p className="id-studio__error" id="id-name-error">{errors.name}</p>}
         </div>
         {errors.profile && <p className="id-studio__error id-studio__error--profile" role="alert">{errors.profile}</p>}
@@ -230,7 +231,7 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
     </div>
 
     <aside className="id-studio__preview" aria-label="Student ID card preview">
-      <div className="id-studio__preview-heading"><div><span>Your card</span><h2>Front & back preview</h2></div><span className="id-studio__live-dot">Live preview</span></div>
+      <div className="id-studio__preview-heading"><div><span>Your card</span><h2>Front & back preview</h2></div></div>
       <div className="id-studio__card-stack">
         <div className="id-studio__face-label">Front</div>
         <div className="id-studio__card id-studio__card--front">
