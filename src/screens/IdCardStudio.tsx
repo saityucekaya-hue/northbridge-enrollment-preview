@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import { ArrowLeft, ArrowRight, Camera, Check, ImagePlus, Minus, Plus, RotateCcw, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Camera, ImagePlus, Minus, Plus, RotateCcw, X } from 'lucide-react';
 import { CelebrationShareCard } from '../components/CelebrationShareCard';
 import { previewIdentityMatch } from '../lib/identity-preview';
 
@@ -140,10 +140,10 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
 
   function validateDetails() {
     const nextErrors: Record<string, string> = {};
-    if (!legalName.trim()) nextErrors.name = 'Enter your full legal name as shown on your ID.';
-    if (!photoCrop) nextErrors.profile = 'Choose and crop your profile photo.';
-    if (!front) nextErrors.front = 'Add the front of your identity document.';
-    if (!back) nextErrors.back = 'Add the back of your identity document.';
+    if (!legalName.trim()) nextErrors.name = 'Enter your legal name.';
+    if (!photoCrop) nextErrors.profile = 'Add and crop a profile photo.';
+    if (!front) nextErrors.front = 'Add the front photo.';
+    if (!back) nextErrors.back = 'Add the back photo.';
     setErrors(nextErrors);
     const first = Object.keys(nextErrors)[0];
     if (first) {
@@ -174,7 +174,10 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
 
   function closeCrop() { setCropOpen(false); setPhotoDraft(null); window.setTimeout(() => photoButtonRef.current?.focus(), 0); }
   function closeComplete() { setCompleteOpen(false); window.setTimeout(() => completeButtonRef.current?.focus(), 0); }
-  function firstName() { return legalName.trim().split(/\s+/)[0] || 'Jordan'; }
+  function firstName() {
+    const name = legalName.trim().split(/\s+/)[0] || 'Jordan';
+    return name.length > 15 ? `${name.slice(0, 14)}…` : name;
+  }
 
   function keepFocusInDialog(event: KeyboardEvent<HTMLElement>, close: () => void) {
     if (event.key === 'Escape') { close(); return; }
@@ -200,30 +203,28 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
             <span className="id-studio__avatar-camera"><Camera size={16} aria-hidden="true" /></span>
           </button>
           <input ref={photoInputRef} className="id-studio__file-input" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Upload profile photo" onChange={(event) => { selectImage('profile', event.target.files?.[0]); event.target.value = ''; }} />
-          {errors.profile && <p className="id-studio__error">{errors.profile}</p>}
         </div>
         <div className="id-studio__field id-studio__legal-field">
           <label htmlFor="id-legal-name">Full legal name <span>*</span></label>
-          <input id="id-legal-name" ref={nameRef} value={legalName} onChange={(event) => { setLegalName(event.target.value); invalidateMatch(); setErrors((current) => ({ ...current, name: '' })); }} placeholder="Exactly as shown on your identity document" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'id-name-error' : undefined} />
+          <input id="id-legal-name" ref={nameRef} value={legalName} onChange={(event) => { setLegalName(event.target.value); invalidateMatch(); setErrors((current) => ({ ...current, name: '' })); }} placeholder="As shown on your ID" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'id-name-error' : undefined} />
           {errors.name && <p className="id-studio__error" id="id-name-error">{errors.name}</p>}
         </div>
+        {errors.profile && <p className="id-studio__error id-studio__error--profile" role="alert">{errors.profile}</p>}
       </div>
 
       <div className="id-studio__documents-heading"><h2>Identity document</h2><p>Photograph the full front and back. Make every edge readable.</p></div>
       <div className="id-studio__document-pair">
-        <label className="id-studio__document-tile" data-filled={Boolean(front)} data-invalid={Boolean(errors.front)}>
+        <div className="id-studio__document-choice"><label className="id-studio__document-tile" data-filled={Boolean(front)} data-invalid={Boolean(errors.front)}>
           {front ? <img src={front.url} alt="Selected front of identity document" /> : <ImagePlus size={28} aria-hidden="true" />}
           <strong>{front ? 'Front selected' : 'Front side'}</strong><span>{front?.name || 'Choose photo'}</span>
           <input ref={frontInputRef} type="file" accept="image/jpeg,image/png,image/webp" aria-label="Upload ID front" aria-invalid={Boolean(errors.front)} aria-describedby={errors.front ? 'id-front-error' : undefined} onChange={(event) => { selectImage('front', event.target.files?.[0]); event.target.value = ''; }} />
-        </label>
-        <label className="id-studio__document-tile" data-filled={Boolean(back)} data-invalid={Boolean(errors.back)}>
+        </label>{errors.front && <p className="id-studio__error" id="id-front-error">{errors.front}</p>}</div>
+        <div className="id-studio__document-choice"><label className="id-studio__document-tile" data-filled={Boolean(back)} data-invalid={Boolean(errors.back)}>
           {back ? <img src={back.url} alt="Selected back of identity document" /> : <ImagePlus size={28} aria-hidden="true" />}
           <strong>{back ? 'Back selected' : 'Back side'}</strong><span>{back?.name || 'Choose photo'}</span>
           <input ref={backInputRef} type="file" accept="image/jpeg,image/png,image/webp" aria-label="Upload ID back" aria-invalid={Boolean(errors.back)} aria-describedby={errors.back ? 'id-back-error' : undefined} onChange={(event) => { selectImage('back', event.target.files?.[0]); event.target.value = ''; }} />
-        </label>
+        </label>{errors.back && <p className="id-studio__error" id="id-back-error">{errors.back}</p>}</div>
       </div>
-      {errors.front && <p className="id-studio__error" id="id-front-error">{errors.front}</p>}
-      {errors.back && <p className="id-studio__error" id="id-back-error">{errors.back}</p>}
       <button ref={completeButtonRef} className="motion-lab__primary id-studio__complete" type="button" disabled={matchStatus === 'checking'} onClick={() => void finishCard()}>{matchStatus === 'checking' ? 'Checking your details…' : 'Finish my ID card'} <ArrowRight size={19} /></button>
       {matchStatus === 'mismatch' && <p className="id-studio__error id-studio__finish-error" role="alert">{matchMessage}</p>}
     </div>
@@ -264,10 +265,9 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
       <div className="id-studio__confetti" aria-hidden="true">{Array.from({ length: 30 }, (_, index) => <span key={index} style={{ '--confetti-x': `${(index * 37) % 100}%`, '--confetti-delay': `${(index % 8) * 75}ms`, '--confetti-rotate': `${(index * 41) % 360}deg` } as React.CSSProperties} />)}</div>
       <button type="button" className="id-studio__close" aria-label="Close celebration" onClick={closeComplete}><X size={21} /></button>
       <div className="id-studio__celebration-copy">
-        <div className="id-studio__success-mark"><Check size={30} /></div>
         <p className="id-studio__success-kicker">A moment worth celebrating</p>
         <h2>Nice one, {firstName()}!</h2>
-        <p>You’ve taken your first step toward Northbridge. Your ID card details are ready for university review. Where do you want to go next?</p>
+        <p>Your ID card details are ready for university review. Choose what comes next.</p>
         <div className="id-studio__success-actions">
           <button ref={firstNextRef} type="button" className="id-studio__destination" aria-label="See your pending enrollment tasks" onClick={() => { setCompleteOpen(false); onDestination('enrollment'); }}>
             <img src={`${import.meta.env.BASE_URL}interest-quiet.png`} alt="" />

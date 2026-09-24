@@ -82,8 +82,9 @@ describe('offer-led sample journey', () => {
     for (const [scene, activity] of collegeActivities.entries()) {
       rerender(<CollegeLifeTransition scene={scene} onSkip={onSkip} />);
       expect(screen.getByText(activity.label, { selector: '.college-life__scene-label strong' })).toBeInTheDocument();
-      expect(document.querySelector(`.college-life__lottie[data-activity="${activity.kind}"]`)).toBeInTheDocument();
-      expect(document.querySelector('.college-life__person')).not.toBeInTheDocument();
+      const illustration = document.querySelector(`.student-scene[data-activity="${activity.kind}"]`);
+      expect(illustration).toBeInTheDocument();
+      expect(illustration?.querySelector('[data-role="student"]')).toBeInTheDocument();
     }
     expect(screen.getByRole('progressbar', { name: 'Loading college life' })).toHaveAttribute('aria-valuenow', '100');
     await user.click(screen.getByRole('button', { name: 'Continue to sign-in setup' }));
@@ -165,6 +166,9 @@ describe('offer-led sample journey', () => {
     expect(screen.queryByRole('button', { name: /Check my details/i })).not.toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
     expect(screen.getByLabelText('Full legal name *')).toHaveFocus();
+    expect(screen.getByText('Add and crop a profile photo.').closest('.id-studio__identity-row')).toBeInTheDocument();
+    expect(screen.getByText('Add the front photo.').closest('.id-studio__document-choice')).toContainElement(screen.getByLabelText('Upload ID front'));
+    expect(screen.getByText('Add the back photo.').closest('.id-studio__document-choice')).toContainElement(screen.getByLabelText('Upload ID back'));
     await user.type(screen.getByLabelText('Full legal name *'), 'Jordan Lee');
     expect(within(screen.getByLabelText('Student ID card preview')).getAllByText('Jordan Lee')).toHaveLength(2);
     expect(screen.queryByLabelText('I do not have a middle name')).not.toBeInTheDocument();
@@ -189,6 +193,7 @@ describe('offer-led sample journey', () => {
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
     const celebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' });
     expect(celebration).toHaveTextContent('Nice one, Jordan!');
+    expect(celebration.querySelector('.id-studio__success-mark')).not.toBeInTheDocument();
     const story = within(celebration).getByRole('img', { name: /Shareable story preview: My next chapter/i });
     expect(story).toBeInTheDocument();
     expect(story.querySelector('img')).toHaveAttribute('src', '/campus-northbridge.png');
@@ -213,8 +218,11 @@ describe('offer-led sample journey', () => {
     await user.click(screen.getByRole('button', { name: /Explore campus opportunities & events/i }));
     expect(screen.getByRole('heading', { name: 'Moments to look forward to' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Back to ID card' }));
+    await user.clear(screen.getByLabelText('Full legal name *'));
+    await user.type(screen.getByLabelText('Full legal name *'), 'Asdfasdasdfasdsfasdfslasdhjgsldfjksdkfgdasf Example');
     await user.click(screen.getByRole('button', { name: /Finish my ID card/i }));
-    await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' });
+    const longNameCelebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' });
+    expect(longNameCelebration).toHaveTextContent('Nice one, Asdfasdasdfasd…!');
     await user.click(screen.getByRole('button', { name: /See your pending enrollment tasks/i }));
     expect(screen.getByRole('heading', { name: 'The next steps are yours.' })).toBeInTheDocument();
   }, 10_000);

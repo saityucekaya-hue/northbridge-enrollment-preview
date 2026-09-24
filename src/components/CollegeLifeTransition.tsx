@@ -1,7 +1,6 @@
 import { ArrowRight, BookOpen, Check, CircleDot, Dumbbell, MessageSquare, TentTree, Waves } from 'lucide-react';
-import { lazy, Suspense, type CSSProperties } from 'react';
-
-const ActivityLottie = lazy(() => import('./ActivityLottie'));
+import { type CSSProperties } from 'react';
+import { StudentActivityScene } from './StudentActivityScene';
 
 export const collegeActivities = [
   { label: 'Learning', detail: 'New ideas to chase', Icon: BookOpen, kind: 'learning' },
@@ -30,12 +29,9 @@ export function CollegeLifeTransition({ scene, onSkip }: { scene: number; onSkip
       </div>
       <div className="college-life__visual">
         <div className="college-life__scene" key={activity.kind} aria-hidden="true">
-          {import.meta.env.MODE === 'test'
-            ? <div className="college-life__lottie" data-activity={activity.kind}><Icon size={152} strokeWidth={1.4} /></div>
-            : <Suspense fallback={<div className="college-life__lottie"><Icon size={152} strokeWidth={1.4} /></div>}><ActivityLottie kind={activity.kind} fallback={<Icon size={152} strokeWidth={1.4} />} /></Suspense>}
+          <StudentActivityScene activity={activity.kind} />
           <div className="college-life__scene-label"><Icon size={23} /><div><strong>{activity.label}</strong><span>{activity.detail}</span></div></div>
         </div>
-        <a className="college-life__credit" href="https://lordicon.com/" target="_blank" rel="noreferrer">Animated icons by Lordicon</a>
       </div>
     </div>
   </div>;

@@ -19,12 +19,35 @@
 .college-life__visual{position:relative;display:grid;place-items:center;min-height:520px}
 .college-life__visual:before{content:'';position:absolute;width:min(100%,520px);aspect-ratio:1;border:1px solid #ffffff37;border-radius:50%;background:radial-gradient(circle,#e4f0d7 0%,#b7d7c5 49%,#72a499 50%,#72a499 58%,transparent 59%);box-shadow:0 25px 90px #00151d80,0 0 0 28px #ffffff0c;animation:college-halo 1.8s ease-in-out infinite alternate}
 .college-life__scene{position:relative;display:grid;justify-items:center;width:min(100%,510px);animation:college-scene .45s cubic-bezier(.2,.9,.3,1) both}
-.college-life__lottie{position:relative;display:grid;place-items:center;width:min(92%,430px);aspect-ratio:1;overflow:hidden;border-radius:50%;color:#1c5d58;filter:drop-shadow(0 15px 12px #1235352b)}
-.college-life__lottie-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;transform:scale(1.08)}
-.college-life__lottie[data-activity=debating] .college-life__lottie-canvas{transform:scale(.9)}
-.college-life__lottie[data-activity=soccer] .college-life__lottie-canvas{transform:scale(1.2)}
-.college-life__credit{position:absolute;bottom:-35px;right:2%;color:#c5d6d1;font-size:.65rem;text-decoration:underline;text-underline-offset:3px}
-.college-life__credit:hover{color:#f3ebc7}
+.student-scene{position:relative;display:block;width:min(100%,480px);height:auto;overflow:visible;filter:drop-shadow(0 15px 12px #1235352b)}
+.student-scene__ground{fill:none;stroke:#6eaa97;stroke-width:5;stroke-linecap:round}
+.student-scene__sleeves{fill:none;stroke:#256b67;stroke-width:22;stroke-linecap:round;stroke-linejoin:round}
+.student-scene__runner{transform-origin:50% 72%;animation:student-run .65s ease-in-out infinite alternate}
+.student-scene__player{animation:student-player .75s ease-in-out infinite alternate}
+.student-scene__basketball{animation:student-dribble .75s ease-in infinite alternate}
+.student-scene__writing{transform-origin:32% 65%;animation:student-write .75s ease-in-out infinite alternate}
+.student-scene__idea{transform-origin:68% 29%;animation:student-idea 2.5s ease-in-out infinite}
+.student-scene__speech{transform-origin:72% 28%;animation:student-speak 1.4s ease-in-out infinite alternate}
+.student-scene__oar{transform-origin:34% 66%;animation:student-row 1.8s ease-in-out infinite alternate}
+.student-scene__ball{animation:student-ball 1.1s ease-in-out infinite alternate}
+.student-scene__horse{transform-origin:48% 82%;animation:student-horse .8s ease-in-out infinite alternate}
+.student-scene__mallet{transform-origin:53% 57%;animation:student-mallet 1.5s ease-in-out infinite alternate}
+.student-scene__soccer-ball{animation:student-kick 1.3s ease-in-out infinite alternate}
+.student-scene__hiker{animation:student-hike 1.4s ease-in-out infinite alternate}
+.student-scene__campfire{transform-origin:52% 82%;animation:student-fire 1.1s ease-in-out infinite alternate}
+@keyframes student-run{to{transform:translate(14px,-8px) rotate(2deg)}}
+@keyframes student-player{to{transform:translateY(5px)}}
+@keyframes student-dribble{to{transform:translateY(34px)}}
+@keyframes student-write{to{transform:rotate(-7deg) translateY(3px)}}
+@keyframes student-idea{50%{transform:scale(1.13);opacity:.7}}
+@keyframes student-speak{to{transform:scale(1.08) translateY(-5px)}}
+@keyframes student-row{to{transform:rotate(-17deg)}}
+@keyframes student-ball{to{transform:translate(-7px,-9px) rotate(7deg)}}
+@keyframes student-horse{to{transform:translateY(-7px) rotate(-1deg)}}
+@keyframes student-mallet{to{transform:rotate(-16deg)}}
+@keyframes student-kick{to{transform:translate(21px,-17px) rotate(35deg)}}
+@keyframes student-hike{to{transform:translateX(10px)}}
+@keyframes student-fire{to{transform:scale(1.07)}}
 .college-life__scene-label{display:flex;align-items:center;gap:12px;min-width:195px;margin-top:-7px;padding:13px 20px;border:1px solid #ffffffd9;border-radius:14px;background:#fffdf5;color:#19343d;box-shadow:0 13px 35px #08242d4a}
 .college-life__scene-label svg{color:#24655d}
 .college-life__scene-label strong,.college-life__scene-label span{display:block}
@@ -39,6 +62,6 @@
 @keyframes college-halo{to{transform:scale(1.04)}}
 @keyframes college-scene{from{opacity:0;transform:translateY(30px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes college-confetti{to{top:110%;transform:translateX(var(--drift)) rotate(760deg)}}
-@media(max-width:760px){.college-life__layout{grid-template-columns:1fr;gap:0;width:min(550px,calc(100% - 42px));min-height:0}.college-life__copy{order:2;text-align:center}.college-life h2{margin:14px 0 9px;font-size:clamp(2.8rem,9vw,4.2rem)}.college-life__copy>p{margin-bottom:20px}.college-life__visual{order:1;min-height:260px}.college-life__visual:before{width:260px}.college-life__lottie{width:210px}.college-life__lottie>svg{width:90px;height:90px}.college-life__scene-label{margin-top:-20px;padding:7px 12px}.college-life__credit{bottom:-14px;right:6%;font-size:.58rem}.college-life__activity-list{justify-content:center;margin:12px 0}.college-life__accepted{font-size:.65rem}}
-@media(max-height:690px) and (min-width:761px){.college-life__visual{min-height:390px}.college-life__visual:before{width:390px}.college-life__lottie{width:330px}.college-life h2{font-size:4.2rem}}
-@media(prefers-reduced-motion:reduce){.college-life__accepted,.college-life__visual:before,.college-life__scene,.college-life__confetti i{animation:none}.college-life__progress span{transition:none}}
+@media(max-width:760px){.college-life__layout{grid-template-columns:1fr;gap:0;width:min(550px,calc(100% - 42px));min-height:0}.college-life__copy{order:2;text-align:center}.college-life h2{margin:14px 0 9px;font-size:clamp(2.8rem,9vw,4.2rem)}.college-life__copy>p{margin-bottom:20px}.college-life__visual{order:1;min-height:260px}.college-life__visual:before{width:260px}.student-scene{width:230px}.college-life__scene-label{margin-top:-20px;padding:7px 12px}.college-life__activity-list{justify-content:center;margin:12px 0}.college-life__accepted{font-size:.65rem}}
+@media(max-height:690px) and (min-width:761px){.college-life__visual{min-height:390px}.college-life__visual:before{width:390px}.student-scene{width:350px}.college-life h2{font-size:4.2rem}}
+@media(prefers-reduced-motion:reduce){.college-life__accepted,.college-life__visual:before,.college-life__scene,.college-life__confetti i,.student-scene g{animation:none}.college-life__progress span{transition:none}}

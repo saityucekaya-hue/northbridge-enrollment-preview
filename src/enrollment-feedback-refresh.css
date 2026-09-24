@@ -1,0 +1,72 @@
+/* Keep validation calm and close to the control it describes. */
+.journey .id-studio__identity-row{display:grid;grid-template-columns:84px minmax(0,1fr);align-items:end;column-gap:16px;row-gap:2px}
+.journey .id-studio__identity-row .id-studio__profile{grid-column:1;grid-row:1}
+.journey .id-studio__identity-row .id-studio__legal-field{grid-column:2;grid-row:1}
+.journey .id-studio__identity-row .id-studio__error--profile{grid-column:1/-1;grid-row:2}
+.journey .id-studio__field input[aria-invalid=true]{border:1px solid #c88892;background:#fffafa;box-shadow:0 0 0 3px #cf8b971c}
+.journey .id-studio__field input[aria-invalid=true]:focus-visible{outline:2px solid #88aaa3;outline-offset:2px}
+.journey .id-studio__document-choice{min-width:0}
+.journey .id-studio__document-choice .id-studio__document-tile{width:100%;box-sizing:border-box}
+.journey .id-studio__document-tile[data-invalid=true]{border:1px solid #c88a92;background:#fffafb}
+.journey .id-studio__error{max-width:100%;margin:6px 0 0;color:#9f4c59;font-size:.7rem;line-height:1.35;font-weight:600;overflow-wrap:anywhere}
+.journey .id-studio__error--profile{display:inline-flex;justify-self:start;align-items:center;gap:6px;padding:5px 9px;border-radius:7px;background:#fbf1f1}
+.journey .id-studio__error--profile::before{content:'•';font-size:1rem;line-height:0}
+.journey .id-studio__document-choice .id-studio__error{padding-inline:3px}
+.journey .id-studio__finish-error{max-width:48ch}
+
+/* Let the share preview lead the celebration. */
+.id-studio__celebration{box-sizing:border-box;width:min(1220px,100%);max-width:100%;grid-template-columns:minmax(250px,3fr) minmax(0,7fr);gap:12px clamp(20px,2.4vw,32px);align-items:start;padding:clamp(20px,2.4vw,32px);overflow-x:hidden}
+.id-studio__celebration .id-studio__confetti{clip-path:inset(0 0 0 31%);opacity:.6}
+.id-studio__celebration-copy{box-sizing:border-box;width:100%;max-width:none;min-width:0;padding:11px 0 0}
+.id-studio__celebration .id-studio__success-kicker{margin:0 0 12px;font-size:.66rem}
+.id-studio__celebration h2{max-width:100%;margin:0 0 14px;font-size:clamp(2rem,3vw,3.2rem);line-height:1.06;overflow-wrap:anywhere;word-break:normal}
+.id-studio__celebration-copy>p:not(.id-studio__success-kicker){max-width:32ch;margin:0 0 25px;font-size:.85rem;line-height:1.55}
+.id-studio__celebration .id-studio__success-actions{grid-template-columns:1fr;gap:10px;max-width:none}
+.id-studio__celebration .id-studio__destination{height:108px;padding:13px 16px;border-radius:12px}
+.id-studio__celebration .id-studio__destination img{left:auto;right:0;width:49%;object-position:center;opacity:.5;filter:saturate(.7)}
+.id-studio__celebration .id-studio__destination::after{background:linear-gradient(90deg,#12363bea 0%,#12363be6 48%,#12363b38 100%)}
+.id-studio__celebration .id-studio__destination:hover img,.id-studio__celebration .id-studio__destination:focus-visible img{opacity:1;filter:saturate(1.04)}
+.id-studio__celebration .id-studio__destination span{gap:5px;z-index:1}
+.id-studio__celebration .id-studio__destination strong{max-width:17ch;font-size:.9rem}
+.id-studio__celebration .id-studio__destination>svg{right:14px;bottom:14px}
+.id-studio__celebration .celebration-share{box-sizing:border-box;min-width:0;padding:19px}
+.id-studio__celebration .celebration-share__heading h3{font-size:clamp(1.3rem,2vw,1.75rem)}
+.id-studio__celebration .celebration-share__stage{height:min(46vh,435px);min-height:360px;padding:12px}
+.id-studio__celebration .celebration-share__card--story{width:min(100%,231px)}
+.id-studio__celebration .celebration-share__card--announcement{width:min(100%,390px)}
+.id-studio__celebration .celebration-share__social{gap:10px}
+.id-studio__celebration .celebration-share__social a{width:49px;height:49px;font-size:1.23rem}
+.id-studio__celebration .celebration-share__download{min-height:45px;padding-inline:18px;font-size:.76rem}
+.id-studio__celebration .id-studio__close{margin:-10px -10px -20px 0}
+@media(min-width:761px) and (max-height:800px){
+  .id-studio__celebration .celebration-share__stage{height:min(41vh,335px);min-height:260px}
+  .id-studio__celebration .celebration-share__card--story{width:min(100%,180px)}
+  .id-studio__celebration .celebration-share__card--announcement{width:min(100%,300px)}
+  .id-studio__celebration .id-studio__destination{height:95px}
+}
+@media(max-width:760px){
+  .id-studio__celebration{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:16px;max-height:calc(100dvh - 24px)}
+  .id-studio__celebration-copy{padding:0}
+  .id-studio__celebration .id-studio__success-kicker{margin-bottom:6px}
+  .id-studio__celebration h2{font-size:clamp(1.9rem,6vw,2.7rem);margin-bottom:8px}
+  .id-studio__celebration-copy>p:not(.id-studio__success-kicker){max-width:none;margin-bottom:13px;font-size:.78rem}
+  .id-studio__celebration .id-studio__success-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .id-studio__celebration .id-studio__destination{height:86px;padding:10px}
+  .id-studio__celebration .id-studio__destination strong{font-size:.76rem;max-width:15ch}
+  .id-studio__celebration .id-studio__destination small{font-size:.47rem}
+  .id-studio__celebration .id-studio__destination>svg{right:9px;bottom:9px;width:16px}
+  .id-studio__celebration .celebration-share{padding:14px}
+  .id-studio__celebration .celebration-share__stage{height:330px;min-height:0}
+  .id-studio__celebration .celebration-share__card--story{width:min(100%,178px)}
+  .id-studio__celebration .celebration-share__card--announcement{width:min(100%,300px)}
+  .id-studio__celebration .celebration-share__social a{width:44px;height:44px;font-size:1.12rem}
+  .journey .id-studio__identity-row{grid-template-columns:76px minmax(0,1fr)}
+}
+@media(max-width:430px){
+  .journey .id-studio__identity-row{grid-template-columns:72px minmax(0,1fr);column-gap:10px}
+  .journey .id-studio__identity-row .id-studio__profile{width:72px}
+  .id-studio__celebration .id-studio__success-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .id-studio__celebration .celebration-share__actions{flex-wrap:wrap;justify-content:center}
+  .id-studio__celebration .celebration-share__download{width:100%}
+}
+@media(max-width:350px){.journey .id-studio__document-pair{grid-template-columns:1fr}.id-studio__celebration .id-studio__success-actions{grid-template-columns:1fr}}
