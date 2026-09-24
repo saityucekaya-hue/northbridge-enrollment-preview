@@ -263,7 +263,7 @@ export function IdCardStudio({ visible, onBack, onDestination }: Props) {
     </section></div>}
 
     {completeOpen && <div className="id-studio__overlay"><section className="id-studio__celebration" role="dialog" aria-modal="true" aria-label="Your first enrollment step is complete" onKeyDown={(event) => keepFocusInDialog(event, closeComplete)}>
-      <div className="id-studio__confetti" aria-hidden="true">{Array.from({ length: 30 }, (_, index) => <span key={index} style={{ '--confetti-x': `${(index * 37) % 100}%`, '--confetti-delay': `${(index % 8) * 75}ms`, '--confetti-rotate': `${(index * 41) % 360}deg` } as React.CSSProperties} />)}</div>
+      <div className="id-studio__confetti" aria-hidden="true">{Array.from({ length: 84 }, (_, index) => <span key={index} style={{ '--confetti-x': `${(index * 37) % 100}%`, '--confetti-delay': `${(index % 21) * 150}ms`, '--confetti-duration': `${6.4 + (index % 4) * .35}s`, '--confetti-drift': `${((index * 29) % 161) - 80}px`, '--confetti-rotate': `${(index * 41) % 360}deg` } as React.CSSProperties} />)}</div>
       <button type="button" className="id-studio__close" aria-label="Close celebration" onClick={closeComplete}><X size={21} /></button>
       <div className="id-studio__celebration-copy">
         <div className="id-studio__party-row" aria-hidden="true"><PartyPopper /><PartyPopper /><PartyPopper /></div>
