@@ -10,7 +10,7 @@ The product makes three important distinctions visible:
 2. A selected local file is not an uploaded or approved document. File bytes are not stored or sent by this preview. Returning after a reload requires selecting the file again.
 3. Campus interests are optional and cannot affect offer status.
 
-The reference images show Google, Microsoft, and Apple sign-in choices. The workspace's active student policy is email and password, so no student identity-provider option appears in the implementation. The university switcher is a sample-theme control; a connected portal must use the server-provided institution identity and published theme, not a browser-chosen tenant.
+The reference images show Google, Microsoft, and Apple sign-in choices. The workspace's active student policy is email and password, so the original sample flow does not expose student identity-provider options. The separate `/motion-concept` preview now shows Google, Apple, and Facebook as visual concept controls that advance local state only. They must not be carried into the active student portal without an approved policy and real provider integration. The university switcher is a sample-theme control; a connected portal must use the server-provided institution identity and published theme, not a browser-chosen tenant.
 
 The sample offer now shows tuition, mandatory fees, estimated direct charges, deposit timing, and aid status, and the confirmation repeats the cost estimate. These values are invented for the preview and labeled illustrative. The diploma preview is a future vision, not an issued credential. Its entrance and reveal animation have a reduced-motion equivalent.
 

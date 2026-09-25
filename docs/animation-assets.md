@@ -1,5 +1,5 @@
 # College life animation assets
 
-The eight acceptance scenes are original SVG illustrations in `src/components/StudentActivityScene.tsx`. They show a student studying, dribbling a basketball, debating, rowing, carrying a rugby ball, playing polo, kicking a soccer ball, and camping. CSS animation moves the relevant object or figure in each scene. The Northbridge navy, teal, cream, and gold palette keeps the sequence consistent.
+The acceptance transition currently shows three locally bundled Lottie animations: a student studying, a runner, and a conversation. The remaining campus activities are listed as possible discoveries, without pairing them with unrelated artwork. Asset creators, source links, and license details are recorded in [`public/animations/README.md`](../public/animations/README.md).
 
-The earlier generic Lordicon icons were removed because the activities were difficult to recognize. The supplied Lottie and premium watermarked video examples remain design references; neither is embedded in this preview. Reduced-motion settings stop the scene motion.
+The earlier generic icons and custom SVG scenes were removed after browser review found that they did not clearly depict the named activities. The supplied premium watermarked examples remain visual references and are not embedded. Northbridge's navy, teal, cream, and gold palette keeps the sequence consistent; reduced-motion settings shorten or stop the scene motion.

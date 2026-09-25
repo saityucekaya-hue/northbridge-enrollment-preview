@@ -1,0 +1,48 @@
+# Northbridge enrollment preview: design and integration handoff
+
+This document records the design decisions behind the current `/motion-concept` journey and the work needed to turn it into a real enrollment flow. The site is a standalone, public React preview. It uses fictional Northbridge content and browser state; it does not accept an issued offer, authenticate a student, upload an identity document, verify identity, or issue a student card. The active Audentra portal and platform are separate repositories.
+
+## What the current design does
+
+1. **Welcome and offer.** The campus photograph establishes place, while a raised letter and compact offer facts give the student a reason to continue. The full sample offer can be read before accepting or declining. The letter is positioned to show most of the page at common desktop heights.
+2. **Acceptance transition.** A restrained navy, teal, cream, and gold palette keeps the animated sequence connected to Northbridge. Three locally bundled Lottie scenes depict studying, running, and conversation. The labels for rowing, rugby, polo, soccer, and camping describe further opportunities; no unrelated animation is presented as one of those activities. The scene can be skipped, and reduced-motion preference shortens or stops motion. Acceptance remains a local simulation.
+3. **Access.** Google, Apple, and Facebook logos use recognizable provider artwork. In this isolated concept, choosing one only advances the demo; it does not contact the provider. The email/password path also validates locally. Production must follow the actual student authentication policy rather than exposing a decorative provider button.
+4. **Create your ID.** The legal name and profile portrait share a row; the name has a 265-character input limit. Profile editing supports dragging, scroll-wheel zoom, a range control, zoom buttons, reset, and keyboard arrow positioning. The empty avatar has one camera icon. Larger front/back image tiles and tighter horizontal padding use the available form space. The dark card panel updates as a **preview**, not as an issued credential. Errors stay next to the affected fields and remain readable on mobile.
+5. **Completion and sharing.** A successful mock check opens a compact dialog. The left side congratulates the student and offers distinct routes to remaining enrollment tasks or campus, clubs, and events. The larger right side keeps the share preview central. Vertical social links sit close to the media; Story 9:16 and Post 1:1 controls sit beside it; an icon on the preview downloads a short video. Story preserves the photographic milestone design, while Post uses an announcement composition inspired by a university acceptance post. The backdrop no longer contains empty display bands. The milestone confetti has 84 muted pieces with staggered, longer falls; reduced-motion preference suppresses it.
+
+The share artwork uses public campus/brand assets. It does not render the student's legal name, portrait, document images, or ID card. Social icons open the corresponding sites; the browser does not post on a student's behalf. Video export uses canvas capture and `MediaRecorder`, chooses a supported MP4 or WebM type, and reports when that browser capability is unavailable.
+
+## Why these choices were made
+
+- Repeated browser review showed that blank space around the preview made the completion dialog feel larger than its content. A narrower dialog with compact controls gives the video the strongest visual weight while keeping next actions understandable.
+- Activity art needs to depict the named student action. The earlier generic and unrelated scenes were rejected in review, so the current set is smaller and semantically clearer. Local assets avoid a runtime dependency on a third-party animation host; provenance and the Lottie Simple License are recorded in `public/animations/README.md`.
+- Color stays subdued at rest and gains emphasis through motion and interaction. The visual language is campus led, with restrained confetti, rather than a collection of unrelated bright illustrations.
+- A live card preview helps students understand cropping and name placement, but its labels must not imply that verification or issuance has happened. Long names, narrow screens, and invalid uploads shaped the field and card layouts.
+- The celebration describes an **enrollment step** as ready for review and points to unfinished work. It must not imply that the student has completed enrollment or secured an unconditional place.
+
+## Current implementation and dependencies
+
+The UI uses React 19, TypeScript, Vite 6, Montserrat, Lucide and React Icons. The acceptance scenes use `@lottiefiles/dotlottie-react` and local `.lottie` files. The celebration video uses browser canvas capture and `MediaRecorder`; there is no export service. Campus photographs, fonts, animations, and the sample letter are served as static project assets with a GitHub Pages base path. `TEST_MODE=true` is the only supported runtime mode. The offer, access, ID match, destinations, and share actions are prototype behavior.
+
+The ID matcher in `src/lib/identity-preview.ts` deliberately reads only the entered name and selected **filenames**. A filename containing `mismatch` demonstrates the retry state; it is not evidence of document comparison. Selected image bytes stay in the browser. The real product must replace this stand-in before using any success state as a verification result.
+
+## Contracts required for a connected product
+
+These are integration requirements, not endpoints implemented by this preview. `docs/contract-and-ux.md` lists relevant existing Audentra platform endpoints and known gaps; any proposed contract must be checked against the current platform version before integration.
+
+| Boundary | Required server behavior | UI dependency |
+| --- | --- | --- |
+| Invitation and session | Bind a single-use, expiring invitation to the admitted student and institution; establish an authenticated session after genuine sign-in. | A route visit or provider-button click cannot unlock private enrollment data. Available sign-in methods must come from server-approved policy. The active Audentra student policy is email/password, so this preview's social options are not production-ready. |
+| Offer | Return an authoritative, versioned offer summary and private letter containing program, term, study mode, campus, conditions, response deadline, tuition/fees and aid/deposit terms where applicable. Accept or decline idempotently with audit details; report expired, withdrawn, already-decided, and version-conflict outcomes. | Render one consistent offer version and show the acceptance sequence only after server confirmation. Never use fictional preview prices as a real quote. |
+| ID submission | Privately upload profile portrait and ID front/back under the authenticated student; enforce file type, size, content checks and agreed retention/deletion rules. Return stable upload identifiers and recoverable error states. | Distinguish local selection, upload progress, received, rejected, and retry states. Do not persist image bytes in browser storage or include them in share media. |
+| Identity review | Persist and return a canonical status such as pending, needs review, mismatch, approved or rejected, associated with the current submission and enrollment record. Ignore stale results after edits or resubmission. | The preview may congratulate the student for submitting a step, but cannot call the student verified or issue a card until the server confirms the appropriate status. |
+| Enrollment continuation | Return the student's remaining tasks, completion requirements and authorized campus/events destinations from the institution's current workflow. | Both next-action buttons must open real destinations and preserve resume state across sessions. The active platform's ordered onboarding steps differ from this preview's three-screen presentation, so mapping needs explicit product approval. |
+| Public share media | Supply institution-approved brand copy and assets with usage rights. Any future server share endpoint must have explicit student consent and a privacy-safe payload. | Keep the current public artwork separate from authenticated identity and document data. Social links remain user-initiated and do not claim automatic publishing. |
+
+For each asynchronous boundary, the UI needs explicit loading, success, failure, retry and stale-response behavior. Mobile, keyboard focus, field-level error text, and reduced-motion behavior are part of the handoff, not optional visual polish. A real ID process also needs institution-approved document types, human review/appeal rules, security controls, and an issued-card policy. The current platform's document upload and onboarding APIs may be useful starting points, but they do not by themselves supply every contract above.
+
+## Verification and limits
+
+The existing focused component tests cover the preview's main journey, local validation, mismatch/retry, both share formats, social destinations, and video export behavior with a recorder double. Prior iterations also received desktop and mobile rendered-browser review, type checking, a production build, and GitHub Pages checks. Those checks validate a **design preview**; they do not prove live OAuth, offer mutation, document storage, real identity verification, or browser video support on every device.
+
+This handoff was prepared using the `push-github-changes` skill for repository, commit, and push review, plus direct source inspection and the prior in-app browser feedback that shaped the UI. No backend integration is being claimed by this documentation commit.
