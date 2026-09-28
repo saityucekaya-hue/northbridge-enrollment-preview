@@ -1,0 +1,986 @@
+{
+  "schemaVersion": 1,
+  "scope": "Northbridge standalone UI preview; no backend or live AI",
+  "journeys": [
+    {
+      "id": "PREVIEW-ENR-001",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open the vertical ToDo, In Review and Done sections",
+        "Collapse and expand ToDo independently",
+        "Open the icon-led sort menu; verify Smart, Due Soon and Fastest icons, Escape focus restoration and arrow-key selection",
+        "Sort Fastest within groups",
+        "Verify search and Filters remain absent",
+        "Collapse and expand Done",
+        "Reload at 1048px and verify sorting wraps below filters, above the ToDo heading, with clear spacing and no framework overlay"
+      ],
+      "outcomes": [
+        "All status sections begin expanded in vertical order with explicit item counts",
+        "Collapsing one section leaves the other sections visible",
+        "Fastest sorting stays within status groups",
+        "Done retains its purple accent; individual cards have no outer group frame",
+        "Sorting sits beside quick filters on wide screens and in a separate row above ToDo on narrow screens; it does not overlap the collapse toggle",
+        "Smart uses sparkles, Due Soon an alarm and Fastest a rocket; the heading leaves at least 16px above the first task card"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open the vertical ToDo, In Review and Done sections",
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        },
+        {
+          "step": 2,
+          "description": "Collapse and expand ToDo independently",
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        },
+        {
+          "step": 3,
+          "description": "Open the icon-led sort menu; verify Smart, Due Soon and Fastest icons, Escape focus restoration and arrow-key selection",
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        },
+        {
+          "step": 4,
+          "description": "Sort Fastest within groups",
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        },
+        {
+          "step": 5,
+          "description": "Verify search and Filters remain absent",
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        },
+        {
+          "step": 6,
+          "description": "Collapse and expand Done",
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        },
+        {
+          "step": 7,
+          "description": "Reload at 1048px and verify sorting wraps below filters, above the ToDo heading, with clear spacing and no framework overlay",
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-001 — vertical status sections toggle independently and sort within groups"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-002",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open housing",
+        "Attempt empty save",
+        "Select housing",
+        "Save",
+        "Observe hiker and points",
+        "Refresh",
+        "View completed task"
+      ],
+      "outcomes": [
+        "Invalid selection is rejected",
+        "Completion advances from 3 to 4",
+        "Points are awarded once",
+        "Status survives refresh"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-002 — saving a preference advances the hiker once and survives refresh"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-003",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "View prerequisite",
+        "Select synthetic transcript",
+        "Submit for review"
+      ],
+      "outcomes": [
+        "Prerequisite viewing does not complete anything",
+        "Transcript joins In Review",
+        "Progress remains 3 of 8"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-003 — uploads await review and prerequisite views never grant points"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-004",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "See vertical status sections and their item counts",
+        "Open phone navigation",
+        "Close using Escape",
+        "Hover a calendar deadline and open its matching task by click and keyboard",
+        "Navigate month and select deadline",
+        "Open help and close with Escape",
+        "Check 360, 768, 1024 and 1440 widths"
+      ],
+      "outcomes": [
+        "Focus restores",
+        "Monthly deadlines update",
+        "Deadline rows highlight on hover and keyboard focus and open the correct task; empty dates remain non-actionable",
+        "Preview footer is absent",
+        "Main content fits viewport"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-004 — phone navigation, calendar and keyboard dialogs remain usable"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-005",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Enable reduced-motion preference",
+        "Set access preference",
+        "Save"
+      ],
+      "outcomes": [
+        "Progress updates without walking animation"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-005 — reduced motion still updates progress immediately"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ONBOARDING-HANDOFF",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Complete mock ID journey",
+        "Open pending enrollment tasks"
+      ],
+      "outcomes": [
+        "My Enrollment replaces the old placeholder destination"
+      ],
+      "testBindings": [
+        {
+          "file": "src/App.test.tsx",
+          "test": "validates and checks the ID when Finish is clicked, celebrates, and opens both destinations"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-006",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open desktop page",
+        "Scroll to help",
+        "Resize to short desktop",
+        "Open phone page and scroll",
+        "Open mobile navigation"
+      ],
+      "outcomes": [
+        "240px desktop sidebar",
+        "Points stay in viewport during page scrolling",
+        "Compact mobile points remain visible",
+        "260px mobile drawer contains points"
+      ],
+      "testBindings": [
+        {
+          "test": "PREVIEW-ENR-006 — points stay visible in wider navigation and on phones",
+          "file": "tools/browser-tests/enrollment.spec.ts"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-001",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open Home at 1104 by 884 and verify simplified day labels and header alignment",
+        "Verify two Saturday previews, the five-event badge and +3 more within a compact card",
+        "Open the busy-day popover and verify five chronological events and viewport bounds",
+        "Dismiss with Escape and outside click; open event details from popover and preview with focus restoration",
+        "Select an empty date without extra message or repeated list",
+        "Navigate across a month boundary and back, then select Today"
+      ],
+      "outcomes": [
+        "Calendar C keeps at most two event previews per day with an overflow count",
+        "The busy-day popover lists all five events in order without increasing card height",
+        "Preview and popover events open details; Escape restores focus and outside click dismisses",
+        "Empty dates have no duplicate list or empty-state copy; week navigation and Today remain correct"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-001 — weekly selection, navigation and simplified labels"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open Home at 1104 by 884 and verify simplified day labels and header alignment",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-001 — weekly selection, navigation and simplified labels"
+        },
+        {
+          "step": 2,
+          "description": "Verify two Saturday previews, the five-event badge and +3 more within a compact card",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-001 — weekly selection, navigation and simplified labels"
+        },
+        {
+          "step": 3,
+          "description": "Open the busy-day popover and verify five chronological events and viewport bounds",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-001 — weekly selection, navigation and simplified labels"
+        },
+        {
+          "step": 4,
+          "description": "Dismiss with Escape and outside click; open event details from popover and preview with focus restoration",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-001 — weekly selection, navigation and simplified labels"
+        },
+        {
+          "step": 5,
+          "description": "Select an empty date without extra message or repeated list",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-001 — weekly selection, navigation and simplified labels"
+        },
+        {
+          "step": 6,
+          "description": "Navigate across a month boundary and back, then select Today",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-001 — weekly selection, navigation and simplified labels"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-002",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open housing from Home",
+        "Choose On campus and save",
+        "Return using My Enrollment Home navigation",
+        "Refresh Home"
+      ],
+      "outcomes": [
+        "The correct enrollment task opens",
+        "Completion advances Home to 50%, 4 of 8 and 400 points",
+        "Completed task leaves pending list; state survives refresh"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-002 — enrollment handoff updates Home progress and points"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open housing from Home",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-002 — enrollment handoff updates Home progress and points"
+        },
+        {
+          "step": 2,
+          "description": "Choose On campus and save",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-002 — enrollment handoff updates Home progress and points"
+        },
+        {
+          "step": 3,
+          "description": "Return using My Enrollment Home navigation",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-002 — enrollment handoff updates Home progress and points"
+        },
+        {
+          "step": 4,
+          "description": "Refresh Home",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-002 — enrollment handoff updates Home progress and points"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-003",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Advance news and go back",
+        "Open the featured article and close it",
+        "Open the welcome announcement and close it",
+        "Open financial details"
+      ],
+      "outcomes": [
+        "News arrows change the feature and article content",
+        "Announcement details are readable",
+        "Financials show a coherent sample estimate with explicit preview disclosure"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-003 — news, announcements and financial details"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Advance news and go back",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-003 — news, announcements and financial details"
+        },
+        {
+          "step": 2,
+          "description": "Open the featured article and close it",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-003 — news, announcements and financial details"
+        },
+        {
+          "step": 3,
+          "description": "Open the welcome announcement and close it",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-003 — news, announcements and financial details"
+        },
+        {
+          "step": 4,
+          "description": "Open financial details",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-003 — news, announcements and financial details"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-004",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open Home at phone width and verify no document overflow",
+        "Open and dismiss mobile navigation with focus restoration",
+        "Scroll to Saturday and open +3 more",
+        "Verify all five events in a viewport-contained popover",
+        "Open an event and dismiss with Escape, returning focus to +3 more"
+      ],
+      "outcomes": [
+        "Navigation remains usable on mobile",
+        "The horizontally scrolling calendar exposes all busy-day events in an accessible popover",
+        "Popover stays within the phone viewport and event details restore focus"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-004 — mobile navigation and calendar remain usable"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open Home at phone width and verify no document overflow",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-004 — mobile navigation and calendar remain usable"
+        },
+        {
+          "step": 2,
+          "description": "Open and dismiss mobile navigation with focus restoration",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-004 — mobile navigation and calendar remain usable"
+        },
+        {
+          "step": 3,
+          "description": "Scroll to Saturday and open +3 more",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-004 — mobile navigation and calendar remain usable"
+        },
+        {
+          "step": 4,
+          "description": "Verify all five events in a viewport-contained popover",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-004 — mobile navigation and calendar remain usable"
+        },
+        {
+          "step": 5,
+          "description": "Open an event and dismiss with Escape, returning focus to +3 more",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-004 — mobile navigation and calendar remain usable"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-TYPE-001",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open Home and Enrollment at desktop and phone widths",
+        "Wait for local font loading",
+        "Sort enrollment tasks"
+      ],
+      "outcomes": [
+        "Google Sans Flex loads and is used by both pages",
+        "No horizontal overflow or framework errors",
+        "Fastest sorts tasks within ToDo"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/typography.spec.ts",
+          "test": "PREVIEW-TYPE-001 — Home and Enrollment load Google Sans Flex at desktop and phone sizes"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-005",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Navigate from Home to My Enrollment and capture the desktop menu",
+        "Return Home and compare sidebar geometry, typography and points card",
+        "Open Menu and confirm the same desktop navigation behavior",
+        "Open the mobile drawer on Home and then My Enrollment",
+        "Compare mobile appearance and dismiss with Escape"
+      ],
+      "outcomes": [
+        "Both pages share the same 240px desktop sidebar and 260px mobile drawer",
+        "Logo, icons, typography, spacing and points placement match",
+        "Active page changes correctly; Escape restores focus"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-005 — Home shares the My Enrollment desktop and mobile menu"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Navigate from Home to My Enrollment and capture the desktop menu",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-005 — Home shares the My Enrollment desktop and mobile menu"
+        },
+        {
+          "step": 2,
+          "description": "Return Home and compare sidebar geometry, typography and points card",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-005 — Home shares the My Enrollment desktop and mobile menu"
+        },
+        {
+          "step": 3,
+          "description": "Open Menu and confirm the same desktop navigation behavior",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-005 — Home shares the My Enrollment desktop and mobile menu"
+        },
+        {
+          "step": 4,
+          "description": "Open the mobile drawer on Home and then My Enrollment",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-005 — Home shares the My Enrollment desktop and mobile menu"
+        },
+        {
+          "step": 5,
+          "description": "Compare mobile appearance and dismiss with Escape",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-005 — Home shares the My Enrollment desktop and mobile menu"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-006",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open the shared menu at 825px desktop height",
+        "Check all eight navigation items and progress card at 600px desktop height",
+        "Open the mobile drawer at 844px, 640px and 500px heights",
+        "Verify Account and the progress card do not overlap and neither the navigation nor sidebar overflows",
+        "Dismiss mobile navigation with Escape"
+      ],
+      "outcomes": [
+        "All menu items remain fully visible without a scrollbar",
+        "The compact points card fits below Account",
+        "Shared layout stays consistent on Home and My Enrollment"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-006 — all menu items fit without navigation scrolling"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open the shared menu at 825px desktop height",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-006 — all menu items fit without navigation scrolling"
+        },
+        {
+          "step": 2,
+          "description": "Check all eight navigation items and progress card at 600px desktop height",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-006 — all menu items fit without navigation scrolling"
+        },
+        {
+          "step": 3,
+          "description": "Open the mobile drawer at 844px, 640px and 500px heights",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-006 — all menu items fit without navigation scrolling"
+        },
+        {
+          "step": 4,
+          "description": "Verify Account and the progress card do not overlap and neither the navigation nor sidebar overflows",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-006 — all menu items fit without navigation scrolling"
+        },
+        {
+          "step": 5,
+          "description": "Dismiss mobile navigation with Escape",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-006 — all menu items fit without navigation scrolling"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-007",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open Home at the reported 1104 by 884 viewport",
+        "Verify the Enrollment heading and four consistently underlined top-right header actions; News has no card action",
+        "Open the calendar schedule and then a listed event; dismiss with Escape",
+        "Open all announcements and financial details",
+        "Resize to mobile and follow View enrollment"
+      ],
+      "outcomes": [
+        "Your Enrollment Progress replaces Your place",
+        "Enrollment, Financials, Announcements and This week share one header action component",
+        "The weekly strip retains day selection and its compact event previews",
+        "Actions open the matching content and restore focus; mobile has no document overflow"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-007 — summary cards share header actions and keep the weekly layout"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open Home at the reported 1104 by 884 viewport",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-007 — summary cards share header actions and keep the weekly layout"
+        },
+        {
+          "step": 2,
+          "description": "Verify the Enrollment heading and four consistently underlined top-right header actions; News has no card action",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-007 — summary cards share header actions and keep the weekly layout"
+        },
+        {
+          "step": 3,
+          "description": "Open the calendar schedule and then a listed event; dismiss with Escape",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-007 — summary cards share header actions and keep the weekly layout"
+        },
+        {
+          "step": 4,
+          "description": "Open all announcements and financial details",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-007 — summary cards share header actions and keep the weekly layout"
+        },
+        {
+          "step": 5,
+          "description": "Resize to mobile and follow View enrollment",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-007 — summary cards share header actions and keep the weekly layout"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-007",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Select each quick filter",
+        "Sort filtered cards",
+        "Restore All tasks and see flagged and unflagged ToDos",
+        "Submit flagged transcript for review",
+        "Verify empty attention filter and In Review",
+        "Refresh and restore All tasks"
+      ],
+      "outcomes": [
+        "Action needed filters by explicit actionNeeded flag, not ToDo membership",
+        "Only flagged actionable ToDos show the pastel red badge",
+        "Review and Done cards have no repeated status badges",
+        "Submission removes attention without awarding points; refresh preserves review state",
+        "Section names stay ToDo, In Review and Done"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/enrollment.spec.ts",
+          "test": "PREVIEW-ENR-007 — quick filters match task labels and preserve section names"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-008",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open /my-enrollment-walkthrough and see step one automatically",
+        "Follow eight spotlights on desktop and phone; check visible placement and focus",
+        "Go Back and Next without changing tasks",
+        "Finish and use sorting on the normal enrollment page"
+      ],
+      "outcomes": [
+        "Eight readable guide steps stay inside the viewport without covering the highlighted region",
+        "Background controls remain inactive while the modal tour is open",
+        "Completion opens normal enrollment with unchanged task counts and progress"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1440px"
+        },
+        {
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1104px"
+        },
+        {
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 390px"
+        },
+        {
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 360px"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open /my-enrollment-walkthrough and see step one automatically",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1440px"
+        },
+        {
+          "step": 1,
+          "description": "Open /my-enrollment-walkthrough and see step one automatically",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1104px"
+        },
+        {
+          "step": 1,
+          "description": "Open /my-enrollment-walkthrough and see step one automatically",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 390px"
+        },
+        {
+          "step": 1,
+          "description": "Open /my-enrollment-walkthrough and see step one automatically",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 360px"
+        },
+        {
+          "step": 2,
+          "description": "Follow eight spotlights on desktop and phone; check visible placement and focus",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1440px"
+        },
+        {
+          "step": 2,
+          "description": "Follow eight spotlights on desktop and phone; check visible placement and focus",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1104px"
+        },
+        {
+          "step": 2,
+          "description": "Follow eight spotlights on desktop and phone; check visible placement and focus",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 390px"
+        },
+        {
+          "step": 2,
+          "description": "Follow eight spotlights on desktop and phone; check visible placement and focus",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 360px"
+        },
+        {
+          "step": 3,
+          "description": "Go Back and Next without changing tasks",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1440px"
+        },
+        {
+          "step": 3,
+          "description": "Go Back and Next without changing tasks",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1104px"
+        },
+        {
+          "step": 3,
+          "description": "Go Back and Next without changing tasks",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 390px"
+        },
+        {
+          "step": 3,
+          "description": "Go Back and Next without changing tasks",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 360px"
+        },
+        {
+          "step": 4,
+          "description": "Finish and use sorting on the normal enrollment page",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1440px"
+        },
+        {
+          "step": 4,
+          "description": "Finish and use sorting on the normal enrollment page",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 1104px"
+        },
+        {
+          "step": 4,
+          "description": "Finish and use sorting on the normal enrollment page",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 390px"
+        },
+        {
+          "step": 4,
+          "description": "Finish and use sorting on the normal enrollment page",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-008 — walkthrough starts, guides and finishes at 360px"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-009",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open normal enrollment with no overlay",
+        "Open walkthrough in reduced motion, advance and reload",
+        "Skip then reopen and exit with Escape",
+        "Open the hash route and close with the X button"
+      ],
+      "outcomes": [
+        "Normal enrollment never starts the tour automatically",
+        "Opening or reloading the walkthrough always starts step one",
+        "Skip, Escape and Close return to enrollment without changing progress",
+        "Reduced motion disables the card entrance animation"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-009 — walkthrough skips, escapes and restarts without changing tasks"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open normal enrollment with no overlay",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-009 — walkthrough skips, escapes and restarts without changing tasks"
+        },
+        {
+          "step": 2,
+          "description": "Open walkthrough in reduced motion, advance and reload",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-009 — walkthrough skips, escapes and restarts without changing tasks"
+        },
+        {
+          "step": 3,
+          "description": "Skip then reopen and exit with Escape",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-009 — walkthrough skips, escapes and restarts without changing tasks"
+        },
+        {
+          "step": 4,
+          "description": "Open the hash route and close with the X button",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-009 — walkthrough skips, escapes and restarts without changing tasks"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-ENR-010",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open the walkthrough with motion enabled",
+        "Advance to the task card and observe rendered intermediate scroll and spotlight positions",
+        "Wait for arrival and verify restored heading focus",
+        "Exit with Escape during the next transition"
+      ],
+      "outcomes": [
+        "The page scrolls over multiple frames instead of jumping",
+        "Spotlight dimensions animate along with scrolling",
+        "Navigation waits for arrival; Skip and Escape remain available",
+        "Exit preserves task progress"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-010 — tour scroll and spotlight move through intermediate positions"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open the walkthrough with motion enabled",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-010 — tour scroll and spotlight move through intermediate positions"
+        },
+        {
+          "step": 2,
+          "description": "Advance to the task card and observe rendered intermediate scroll and spotlight positions",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-010 — tour scroll and spotlight move through intermediate positions"
+        },
+        {
+          "step": 3,
+          "description": "Wait for arrival and verify restored heading focus",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-010 — tour scroll and spotlight move through intermediate positions"
+        },
+        {
+          "step": 4,
+          "description": "Exit with Escape during the next transition",
+          "file": "tools/browser-tests/walkthrough.spec.ts",
+          "test": "PREVIEW-ENR-010 — tour scroll and spotlight move through intermediate positions"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-HOME-008",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open dashboard at wide desktop, compact desktop and phone widths",
+        "Verify four non-overlapping destination controls within the hero and no page overflow",
+        "Open Library, Sports Center, Fraternity House and Student Union preview details",
+        "Dismiss each destination with Escape and verify focus restoration"
+      ],
+      "outcomes": [
+        "Approved B art has real UI labels and responsive destination controls",
+        "All four destination previews open with matching content",
+        "Future Campus & study routing remains explicitly deferred"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-008 — archway hero destinations work on desktop and mobile"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open dashboard at wide desktop, compact desktop and phone widths",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-008 — archway hero destinations work on desktop and mobile"
+        },
+        {
+          "step": 2,
+          "description": "Verify four non-overlapping destination controls within the hero and no page overflow",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-008 — archway hero destinations work on desktop and mobile"
+        },
+        {
+          "step": 3,
+          "description": "Open Library, Sports Center, Fraternity House and Student Union preview details",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-008 — archway hero destinations work on desktop and mobile"
+        },
+        {
+          "step": 4,
+          "description": "Dismiss each destination with Escape and verify focus restoration",
+          "file": "tools/browser-tests/home.spec.ts",
+          "test": "PREVIEW-HOME-008 — archway hero destinations work on desktop and mobile"
+        }
+      ]
+    },
+    {
+      "id": "PREVIEW-PAGES-001",
+      "actors": [
+        "student-preview"
+      ],
+      "steps": [
+        "Open and refresh the published Home and My Enrollment directory routes",
+        "Verify headings and load fonts and artwork without browser or asset errors",
+        "Navigate from My Enrollment to Home and back through real controls",
+        "Open the walkthrough directly"
+      ],
+      "outcomes": [
+        "Static GitHub Pages entries support direct links and refreshes under the repository base path",
+        "Shared navigation and all three entry routes load without missing assets"
+      ],
+      "testBindings": [
+        {
+          "file": "tools/browser-tests/pages.spec.ts",
+          "test": "PREVIEW-PAGES-001 — published routes, assets and navigation survive refresh"
+        }
+      ],
+      "stepBindings": [
+        {
+          "step": 1,
+          "description": "Open and refresh the published Home and My Enrollment directory routes",
+          "file": "tools/browser-tests/pages.spec.ts",
+          "test": "PREVIEW-PAGES-001 — published routes, assets and navigation survive refresh"
+        },
+        {
+          "step": 2,
+          "description": "Verify headings and load fonts and artwork without browser or asset errors",
+          "file": "tools/browser-tests/pages.spec.ts",
+          "test": "PREVIEW-PAGES-001 — published routes, assets and navigation survive refresh"
+        },
+        {
+          "step": 3,
+          "description": "Navigate from My Enrollment to Home and back through real controls",
+          "file": "tools/browser-tests/pages.spec.ts",
+          "test": "PREVIEW-PAGES-001 — published routes, assets and navigation survive refresh"
+        },
+        {
+          "step": 4,
+          "description": "Open the walkthrough directly",
+          "file": "tools/browser-tests/pages.spec.ts",
+          "test": "PREVIEW-PAGES-001 — published routes, assets and navigation survive refresh"
+        }
+      ]
+    }
+  ]
+}

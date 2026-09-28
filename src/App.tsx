@@ -6,6 +6,9 @@ import { CampusScreen, ContactScreen } from './screens/OfferFlow';
 import { OfferScreen } from './screens/OfferExperience';
 import { DiscoverScreen, DocumentsScreen, EnrollmentScreen, NextStepsScreen, TasksScreen } from './screens/EnrollmentFlow';
 import { MotionConcept } from './screens/MotionConcept';
+import { MyEnrollment } from './screens/MyEnrollment';
+import { HomeDashboard } from './screens/HomeDashboard';
+import { EnrollmentWalkthrough } from './screens/EnrollmentWalkthrough';
 
 const isDemoMode = __TEST_MODE__;
 
@@ -48,6 +51,10 @@ export default function App() {
   }
 
   if (!isDemoMode) return <div className="disabled-preview"><h1>Demo mode is disabled.</h1><p>This frontend has no backend connection. Set TEST_MODE=true to explore the sample journey.</p></div>;
+
+  if (window.location.pathname.replace(/\/$/, '').endsWith('/dashboard')) return <HomeDashboard />;
+  if (window.location.pathname.replace(/\/$/, '').endsWith('/my-enrollment-walkthrough') || window.location.hash === '#my-enrollment-walkthrough') return <EnrollmentWalkthrough />;
+  if (window.location.pathname.replace(/\/$/, '').endsWith('/my-enrollment') || window.location.hash === '#my-enrollment') return <MyEnrollment />;
 
   const pagesRoot = import.meta.env.BASE_URL !== '/' && [import.meta.env.BASE_URL, `${import.meta.env.BASE_URL}index.html`].includes(window.location.pathname);
   if (window.location.pathname === '/motion-concept' || pagesRoot) return <MotionConcept />;

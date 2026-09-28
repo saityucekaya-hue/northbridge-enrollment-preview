@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaApple, FaFacebookF } from 'react-icons/fa6';
 import { IdCardStudio } from './IdCardStudio';
 import { CollegeLifeTransition, collegeActivities } from '../components/CollegeLifeTransition';
+import { MyEnrollment } from './MyEnrollment';
 
 type Chapter = 'arrival' | 'offer' | 'access' | 'documents' | 'declined' | 'enrollment' | 'opportunities';
 type Provider = 'Google' | 'Apple' | 'Facebook';
@@ -88,6 +89,7 @@ export function MotionConcept() {
 
   function go(next: Chapter) {
     setLetterOpen(false);
+    if (next === 'enrollment') window.history.pushState({}, '', `${import.meta.env.BASE_URL}#my-enrollment`);
     setChapter(next);
     const nextStep = steps.findIndex((step) => step.chapter === next);
     if (nextStep >= 0) setFurthestStep((current) => Math.max(current, nextStep));
@@ -133,6 +135,8 @@ export function MotionConcept() {
     if (confirmPassword !== password) { confirmRef.current?.focus(); return; }
     if (saveReady) go('documents');
   }
+
+  if (chapter === 'enrollment') return <MyEnrollment />;
 
   return <main className="motion-lab journey" data-chapter={chapter}>
     <header className="journey__header">
@@ -210,7 +214,6 @@ export function MotionConcept() {
     </section>}
 
     {chapter === 'declined' && <section className="motion-lab__destination" aria-labelledby="motion-title"><div className="journey__overline">Your decision</div><h1 id="motion-title" tabIndex={-1} ref={titleRef}>Thank you for letting us know.</h1><p>Your reason is recorded for this local preview. If you need another look, your offer details are still here.</p><button type="button" className="journey__button journey__button--outline" onClick={() => go('offer')}>Review offer again <ArrowRight size={18} /></button></section>}
-    {chapter === 'enrollment' && <section className="motion-lab__destination" aria-labelledby="motion-title"><button type="button" className="motion-lab__back" onClick={() => go('documents')}><ArrowLeft size={18} /> Back to ID card</button><div className="journey__overline">Your enrollment</div><h1 id="motion-title" tabIndex={-1} ref={titleRef}>The next steps are yours.</h1><p>Your ID card details are ready for review. Keep going with the remaining enrollment tasks.</p><div className="motion-lab__destination-grid"><article><span>01</span><h2>Final transcript</h2><p>Prepare your final transcript for university review.</p></article><article><span>02</span><h2>Complete your details</h2><p>Review your contact details and anything the university still needs.</p></article><article><span>03</span><h2>Discover campus life</h2><p>Find the communities and opportunities that interest you.</p><button type="button" onClick={() => go('opportunities')}>Explore campus <ArrowRight size={17} /></button></article></div></section>}
     {chapter === 'opportunities' && <section className="motion-lab__destination" aria-labelledby="motion-title"><button type="button" className="motion-lab__back" onClick={() => go('documents')}><ArrowLeft size={18} /> Back to ID card</button><div className="journey__overline">Life at Northbridge</div><h1 id="motion-title" tabIndex={-1} ref={titleRef}>Find your people. Find your place.</h1><p>Explore the spaces, clubs, and experiences that could make campus feel like yours.</p><div className="motion-lab__opportunities"><article><img src={staticAsset('interest-clubs.png')} alt="Students taking part in a campus club" /><h2>Clubs & communities</h2><p>Follow your interests and meet people who share them.</p></article><article><img src={staticAsset('interest-arts.png')} alt="Students exploring arts on campus" /><h2>Arts & culture</h2><p>Discover creative spaces and ways to take part.</p></article><article><img src={staticAsset('interest-sports.png')} alt="Students enjoying campus sports" /><h2>Sport & movement</h2><p>Find a team, a class, or a new way to unwind.</p></article></div><div className="motion-lab__events"><div><span>THE CAMPUS CALENDAR</span><h2>Moments to look forward to</h2></div><ul><li><strong>Welcome events</strong><span>Meet classmates and find your way around.</span></li><li><strong>Club meetups</strong><span>Try something new with people who get it.</span></li><li><strong>Student showcases</strong><span>See what the community is creating.</span></li></ul></div><button type="button" className="motion-lab__primary" onClick={() => go('enrollment')}>See your enrollments <ArrowRight size={18} /></button></section>}
     <div hidden={chapter !== 'documents'}><IdCardStudio visible={chapter === 'documents'} onBack={() => go('access')} onDestination={go} /></div>
 

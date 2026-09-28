@@ -238,7 +238,7 @@ describe('offer-led sample journey', () => {
     const longNameCelebration = await screen.findByRole('dialog', { name: 'Your first enrollment step is complete' }, { timeout: 5000 });
     expect(longNameCelebration).toHaveTextContent('Congratulations,Asdfasdasdfasd…!');
     await user.click(screen.getByRole('button', { name: /See your pending enrollment tasks/i }));
-    expect(screen.getByRole('heading', { name: 'The next steps are yours.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'My Enrollment' })).toBeInTheDocument();
   }, 30_000);
 
   it('keeps Finish locked after a mismatch or a stale check, then allows a retry', async () => {
